@@ -3,12 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-const variants = {
-  hidden: { opacity: 0, y: 12 },
-  enter:  { opacity: 1, y: 0 },
-  exit:   { opacity: 0, y: -8 },
-};
-
 export function PageTransitionWrapper({
   children,
 }: {
@@ -17,17 +11,18 @@ export function PageTransitionWrapper({
   const pathname = usePathname();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="popLayout" initial={false}>
       <motion.div
         key={pathname}
-        variants={variants}
-        initial="hidden"
-        animate="enter"
-        exit="exit"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -6 }}
         transition={{
-          duration: 0.38,
+          duration: 0.28,
           ease: [0.22, 1, 0.36, 1],
         }}
+        // Prevent layout shift during the transition
+        style={{ minHeight: "100%" }}
       >
         {children}
       </motion.div>

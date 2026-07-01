@@ -38,7 +38,7 @@ export function Footer() {
               KP
             </Link>
             <p style={{ fontFamily: "var(--font-manrope), sans-serif", fontSize: "0.8125rem", color: "#8A847B" }}>
-              Creative Director &amp; Designer — London / Lisbon
+              Full-Stack Developer
             </p>
           </div>
 
