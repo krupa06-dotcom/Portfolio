@@ -1,14 +1,18 @@
 import type { Project } from "@/lib/types";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { defaultEasing } from "@/lib/motion";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <a
+    <motion.a
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block bg-surface rounded-md border border-border overflow-hidden transition-all hover:border-[rgba(244,243,239,0.15)]"
+      whileHover={{ y: -4 }}
+      transition={{ ease: defaultEasing, duration: 0.2 }}
+      className="group block bg-surface rounded-md border border-border overflow-hidden transition-colors hover:border-accent"
     >
       <div className="relative aspect-video bg-surface overflow-hidden">
         {project.image_url ? (
@@ -16,7 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             src={project.image_url}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-200 group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
@@ -43,6 +47,6 @@ export default function ProjectCard({ project }: { project: Project }) {
           ))}
         </div>
       </div>
-    </a>
+    </motion.a>
   );
 }

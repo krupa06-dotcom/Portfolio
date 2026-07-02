@@ -1,5 +1,5 @@
-import ProjectCard from "@/components/ProjectCard";
 import { getProjects } from "../actions";
+import ProjectsGrid from "@/components/ProjectsGrid";
 
 export const dynamic = "force-dynamic";
 
@@ -21,19 +21,7 @@ export default async function ProjectsPage() {
           </p>
         </div>
 
-        {projects.length === 0 ? (
-          <div className="py-20 text-center">
-            <p className="text-muted font-mono text-xs tracking-[0.08em] uppercase">
-              No projects yet
-            </p>
-          </div>
-        ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
-        )}
+        <ProjectsGrid projects={projects} />
       </div>
     </div>
   );

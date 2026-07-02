@@ -1,74 +1,109 @@
 "use client";
 
 import { submitContact } from "@/app/actions";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { defaultEasing } from "@/lib/motion";
 
 export default function ContactForm() {
   const ref = useRef<HTMLFormElement>(null);
+  const [pending, setPending] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   return (
-    <form
-      ref={ref}
-      action={async (formData) => {
-        await submitContact(formData);
-        ref.current?.reset();
-      }}
-      className="space-y-5"
-    >
-      <div>
-        <label
-          htmlFor="name"
-          className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+    <AnimatePresence mode="wait">
+      {success ? (
+        <motion.p
+          key="success"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: defaultEasing, duration: 0.3 }}
+          className="text-accent font-heading font-semibold text-lg"
         >
-          Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors"
-          placeholder="Your name"
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="email"
-          className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+          Thanks! I&apos;ll get back to you soon.
+        </motion.p>
+      ) : (
+        <motion.form
+          key="form"
+          ref={ref}
+          action={async (formData) => {
+            setPending(true);
+            await submitContact(formData);
+            setPending(false);
+            setSuccess(true);
+            ref.current?.reset();
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: defaultEasing, duration: 0.3 }}
+          className="space-y-5"
         >
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors"
-          placeholder="your@email.com"
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="message"
-          className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
-        >
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={4}
-          required
-          className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors resize-none"
-          placeholder="Your message..."
-        />
-      </div>
-      <button
-        type="submit"
-        className="px-6 py-2.5 bg-accent text-background font-heading font-semibold text-sm rounded-md hover:bg-accent/90 transition-colors"
-      >
-        Send Message
-      </button>
-    </form>
+          <div>
+            <label
+              htmlFor="name"
+              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors duration-150"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="email"
+              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors duration-150"
+              placeholder="your@email.com"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="message"
+              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+            >
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              required
+              className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors duration-150 resize-none"
+              placeholder="Your message..."
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={pending}
+            className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent text-background font-heading font-semibold text-sm rounded-md hover:bg-accent/90 transition-colors disabled:opacity-70"
+          >
+            {pending ? (
+              <>
+                Sending
+                <span className="inline-block w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+              </>
+            ) : (
+              "Send Message"
+            )}
+          </button>
+        </motion.form>
+      )}
+    </AnimatePresence>
   );
 }
