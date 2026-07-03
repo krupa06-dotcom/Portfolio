@@ -15,8 +15,8 @@ export default function Nav() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
-  const bgOpacity = useTransform(scrollY, [0, 40], [0, 0.85]);
-  const blurPx = useTransform(scrollY, [0, 40], [0, 16]);
+  const bgOpacity = useTransform(scrollY, [0, 40], [0, 0.8]);
+  const blurPx = useTransform(scrollY, [0, 40], [0, 12]);
   const borderAlpha = useTransform(scrollY, [0, 40], [0, 0.06]);
 
   const bg = useMotionTemplate`rgba(18, 12, 12, ${bgOpacity})`;
@@ -42,7 +42,7 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`font-body text-sm transition-colors relative ${
+              className={`font-body text-[15px] transition-colors relative ${
                 pathname === link.href
                   ? "text-primary"
                   : "text-muted/80 hover:text-primary"

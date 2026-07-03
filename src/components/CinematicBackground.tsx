@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function CinematicBackground() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [reducedMotion, setReducedMotion] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const quiet = pathname === "/contact";
 
   useEffect(() => {
     setMounted(true);
@@ -58,20 +61,24 @@ export default function CinematicBackground() {
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
       <div className="absolute inset-0 bg-[#120C0C]" />
 
-      <div
-        className={`absolute -top-1/4 -left-1/4 w-[60vw] h-[60vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-1" : ""}`}
-        style={{
-          background: "radial-gradient(circle, rgba(196,70,44,0.3) 0%, transparent 70%)",
-          filter: "blur(120px)",
-        }}
-      />
-      <div
-        className={`absolute -bottom-1/4 -right-1/4 w-[50vw] h-[50vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-2" : ""}`}
-        style={{
-          background: "radial-gradient(circle, rgba(36,28,61,0.35) 0%, transparent 70%)",
-          filter: "blur(120px)",
-        }}
-      />
+      {!quiet && (
+        <>
+          <div
+            className={`absolute -top-1/4 -left-1/4 w-[60vw] h-[60vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-1" : ""}`}
+            style={{
+              background: "radial-gradient(circle, rgba(196,70,44,0.3) 0%, transparent 70%)",
+              filter: "blur(120px)",
+            }}
+          />
+          <div
+            className={`absolute -bottom-1/4 -right-1/4 w-[50vw] h-[50vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-2" : ""}`}
+            style={{
+              background: "radial-gradient(circle, rgba(36,28,61,0.35) 0%, transparent 70%)",
+              filter: "blur(120px)",
+            }}
+          />
+        </>
+      )}
 
       <div
         className="absolute inset-0"
@@ -92,7 +99,7 @@ export default function CinematicBackground() {
         <rect width="100%" height="100%" filter="url(#cinematic-grain)" />
       </svg>
 
-      {isDesktop && !reducedMotion && mounted && (
+      {!quiet && isDesktop && !reducedMotion && mounted && (
         <div
           ref={cursorRef}
           className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"

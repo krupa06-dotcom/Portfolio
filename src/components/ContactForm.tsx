@@ -19,7 +19,7 @@ export default function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ ease: defaultEasing, duration: 0.3 }}
-          className="text-muted font-semibold text-lg"
+          className="text-muted font-medium text-lg"
         >
           Thanks for reaching out! I&apos;ll get back to you soon.
         </motion.p>

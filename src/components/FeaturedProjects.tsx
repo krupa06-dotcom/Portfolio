@@ -15,29 +15,21 @@ export default function FeaturedProjects({
   return (
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-2">
-              Selected Work
-            </p>
-            <h2 className="font-heading font-semibold text-3xl sm:text-4xl tracking-[-0.03em]">
-              Featured Projects
-            </h2>
-          </div>
-          <Link
-            href="/projects"
-            className="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
-          >
-            View All
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+        <div className="mb-12">
+          <h2 className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em]">
+            Featured Projects
+          </h2>
+          <p className="text-muted text-sm mt-3 max-w-xl leading-[1.6]">
+            Live products I&apos;ve built end-to-end — from UI design to
+            backend logic and deployment.
+          </p>
         </div>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={cardStagger}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          className="grid sm:grid-cols-2 gap-6"
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>
@@ -45,7 +37,7 @@ export default function FeaturedProjects({
             </motion.div>
           ))}
         </motion.div>
-        <div className="mt-10 text-center sm:hidden">
+        <div className="mt-10 text-center">
           <Link
             href="/projects"
             className="inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"

@@ -23,8 +23,7 @@ export default function ExperienceTimeline({
     <div className="space-y-16">
       {experience.length > 0 && (
         <div>
-          <h2 className="font-heading font-semibold text-2xl tracking-[-0.02em] mb-8 flex items-center gap-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent glow-sm" />
+          <h2 className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em] mb-10">
             Internships
           </h2>
           <motion.div
@@ -38,9 +37,9 @@ export default function ExperienceTimeline({
               <motion.div
                 key={exp.id}
                 variants={expVariants}
-                className="flex gap-6 pb-10 relative last:pb-0"
+                className={`flex gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center shrink-0">
                   <div className="w-3 h-3 rounded-full bg-accent mt-1.5 glow-sm" />
                   {i < experience.length - 1 && (
                     <motion.div
@@ -57,12 +56,22 @@ export default function ExperienceTimeline({
                   <h3 className="font-semibold text-lg tracking-[-0.02em]">
                     {exp.role}
                   </h3>
-                    <p className="text-muted/70 font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
+                  <p className="text-muted/70 font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
                     {exp.company}
                   </p>
                   <p className="text-sm text-muted/70 leading-relaxed">
                     {exp.description}
                   </p>
+                  {i % 2 === 0 && (
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      <span className="text-[10px] font-mono text-muted/40 border border-[rgba(245,241,236,0.06)] px-2 py-0.5 rounded">
+                        Full-time
+                      </span>
+                      <span className="text-[10px] font-mono text-muted/40 border border-[rgba(245,241,236,0.06)] px-2 py-0.5 rounded">
+                        Remote
+                      </span>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -72,8 +81,7 @@ export default function ExperienceTimeline({
 
       {hackathons.length > 0 && (
         <div>
-          <h2 className="font-heading font-semibold text-2xl tracking-[-0.02em] mb-8 flex items-center gap-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent glow-sm" />
+          <h2 className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em] mb-10">
             Hackathons
           </h2>
           <motion.div
@@ -87,9 +95,9 @@ export default function ExperienceTimeline({
               <motion.div
                 key={h.id}
                 variants={expVariants}
-                className="flex gap-6 pb-10 relative last:pb-0"
+                className={`flex gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center shrink-0">
                   <div className="w-3 h-3 rounded-full bg-accent mt-1.5 glow-sm" />
                   {i < hackathons.length - 1 && (
                     <motion.div

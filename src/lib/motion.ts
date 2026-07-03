@@ -1,14 +1,14 @@
 export const defaultEasing: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const pageTransition = {
-  initial: { opacity: 0, y: 8 },
-  animate: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.2 } },
-  exit: { opacity: 0, y: -8, transition: { ease: defaultEasing, duration: 0.2 } },
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.35 } },
+  exit: { opacity: 0, y: -24, transition: { ease: defaultEasing, duration: 0.3 } },
 };
 
 export const fadeUpVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { ease: defaultEasing } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.4 } },
 };
 
 export const cardStagger = {
@@ -23,22 +23,22 @@ export const cardVariants = {
 
 export const tagStagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.04 } },
+  visible: { transition: { staggerChildren: 0.06 } },
 };
 
 export const tagVariants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.3 } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.35 } },
 };
 
 export const expStagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
+  visible: { transition: { staggerChildren: 0.08 } },
 };
 
 export const expVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.35 } },
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.4 } },
 };
 
 export const lineVariants = {

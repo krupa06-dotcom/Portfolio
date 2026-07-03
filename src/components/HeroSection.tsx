@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { defaultEasing } from "@/lib/motion";
 
 const container = {
-  animate: { transition: { staggerChildren: 0.1 } },
+  animate: { transition: { staggerChildren: 0.08 } },
 };
 
 const item = {
@@ -33,25 +33,25 @@ export default function HeroSection() {
           >
             <motion.p
               variants={item}
-              className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-5"
+              className="font-semibold text-xs tracking-[0.15em] uppercase text-accent mb-5"
             >
               Full-Stack Developer &middot; UI/UX
             </motion.p>
             <motion.h1
               variants={item}
-              className="font-heading font-bold text-5xl sm:text-6xl lg:text-7xl tracking-[-0.03em] leading-[1.05] mb-3 text-primary"
+              className="font-heading font-semibold text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] mb-3 text-primary"
             >
               Krupa Parmar
             </motion.h1>
             <motion.p
               variants={item}
-              className="text-xl sm:text-2xl text-muted tracking-[-0.02em] mb-4"
+              className="text-lg sm:text-xl font-medium text-muted mb-4"
             >
               I build things end-to-end.
             </motion.p>
             <motion.p
               variants={item}
-              className="text-muted/80 text-base leading-relaxed max-w-lg mb-8"
+              className="text-muted text-base leading-[1.6] max-w-lg mb-8"
             >
               Full-stack developer and hackathon participant who builds
               end-to-end products — from UI design to backend logic. Comfortable
@@ -82,8 +82,8 @@ export default function HeroSection() {
             variants={photoItem}
             className="shrink-0"
           >
-            <div className="relative glow rounded-sm overflow-hidden">
-              <div className="w-64 h-64 sm:w-72 sm:h-72 relative">
+            <div className="relative glow">
+              <div className="w-64 h-64 sm:w-72 sm:h-72 relative [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black_60%,transparent_85%)]">
                 <Image
                   src="/avatar.png"
                   alt="Krupa Parmar"
@@ -98,6 +98,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none bg-gradient-to-b from-transparent to-[#120C0C]" />
     </section>
   );
 }

@@ -28,6 +28,7 @@ const config: Config = {
       animation: {
         "aurora-1": "aurora-1 22s ease-in-out infinite alternate",
         "aurora-2": "aurora-2 18s ease-in-out infinite alternate",
+        "marquee": "marquee 40s linear infinite",
       },
       keyframes: {
         "aurora-1": {
@@ -39,6 +40,10 @@ const config: Config = {
           "0%": { transform: "translate(0, 0) scale(1)" },
           "50%": { transform: "translate(-4%, -2%) scale(1.08)" },
           "100%": { transform: "translate(3%, 4%) scale(0.92)" },
+        },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

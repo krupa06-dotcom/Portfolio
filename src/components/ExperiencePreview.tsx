@@ -22,22 +22,17 @@ export default function ExperiencePreview({
   return (
     <section className="py-24 bg-surface/50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-2">
-              Background
-            </p>
-            <h2 className="font-heading font-semibold text-3xl sm:text-4xl tracking-[-0.03em]">
-              Experience
-            </h2>
-          </div>
-          <Link
-            href="/experience"
-            className="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
-          >
-            View All
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+        <div className="mb-12">
+          <p className="font-semibold text-xs tracking-[0.15em] uppercase text-accent mb-3">
+            Background
+          </p>
+          <h2 className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em] mb-3">
+            Experience
+          </h2>
+          <p className="text-muted text-sm max-w-lg leading-[1.6]">
+            Internships and hackathons that shaped my approach to building
+            products.
+          </p>
         </div>
         <motion.div
           initial="hidden"
@@ -67,7 +62,7 @@ export default function ExperiencePreview({
             </motion.div>
           ))}
         </motion.div>
-        <div className="mt-10 sm:hidden">
+        <div className="mt-10 text-center">
           <Link
             href="/experience"
             className="inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
