@@ -1,32 +1,39 @@
-import { getProjects, getExperiences, getMessages } from "../actions";
+import { cookies } from "next/headers";
+import {
+  getProjects,
+  getExperience,
+  getHackathons,
+  getMessages,
+  getProfile,
+} from "../actions";
 import AdminLogin from "./AdminLogin";
 import AdminDashboard from "./AdminDashboard";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminPage({
-  searchParams,
-}: {
-  searchParams: { auth?: string };
-}) {
-  const isAuthed = searchParams.auth === process.env.ADMIN_SECRET;
-  const authFailed = !!(searchParams.auth && !isAuthed);
+export default async function AdminPage() {
+  const session = cookies().get("admin_session")?.value === "true";
 
-  if (!isAuthed) {
-    return <AdminLogin authFailed={authFailed} />;
+  if (!session) {
+    return <AdminLogin />;
   }
 
-  const [projects, experiences, messages] = await Promise.all([
-    getProjects(),
-    getExperiences(),
-    getMessages(),
-  ]);
+  const [projects, experience, hackathons, messages, profile] =
+    await Promise.all([
+      getProjects(),
+      getExperience(),
+      getHackathons(),
+      getMessages(),
+      getProfile(),
+    ]);
 
   return (
     <AdminDashboard
       projects={projects}
-      experiences={experiences}
+      experience={experience}
+      hackathons={hackathons}
       messages={messages}
+      profile={profile}
     />
   );
 }

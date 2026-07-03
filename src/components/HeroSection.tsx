@@ -16,19 +16,15 @@ const item = {
 };
 
 const photoItem = {
-  hidden: { opacity: 0, scale: 0.96 },
-  animate: {
-    opacity: 1,
-    scale: 1,
-    transition: { ease: defaultEasing, duration: 0.5 },
-  },
+  hidden: { opacity: 0, scale: 0.92 },
+  animate: { opacity: 1, scale: 1, transition: { ease: defaultEasing, duration: 0.5 } },
 };
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center pt-24 pb-16">
+    <section className="min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-24">
           <motion.div
             className="flex-1 max-w-xl"
             initial="hidden"
@@ -37,25 +33,25 @@ export default function HeroSection() {
           >
             <motion.p
               variants={item}
-              className="font-mono text-xs text-muted tracking-[0.08em] uppercase mb-4"
+              className="font-mono text-xs text-accent tracking-[0.12em] uppercase mb-5"
             >
               Full-Stack Developer &middot; UI/UX
             </motion.p>
             <motion.h1
               variants={item}
-              className="font-heading font-bold text-5xl sm:text-6xl lg:text-7xl tracking-[-0.02em] leading-[1.05] mb-3"
+              className="font-heading font-bold text-5xl sm:text-6xl lg:text-7xl tracking-[-0.03em] leading-[1.05] mb-3 gradient-text"
             >
               Krupa Parmar
             </motion.h1>
             <motion.p
               variants={item}
-              className="font-heading font-semibold text-2xl sm:text-3xl text-muted tracking-[-0.02em] mb-4"
+              className="font-heading font-semibold text-xl sm:text-2xl text-muted tracking-[-0.02em] mb-4"
             >
               I build things end-to-end.
             </motion.p>
             <motion.p
               variants={item}
-              className="text-muted text-base leading-relaxed max-w-lg mb-8"
+              className="text-muted/80 text-base leading-relaxed max-w-lg mb-8"
             >
               Full-stack developer and hackathon participant who builds
               end-to-end products — from UI design to backend logic. Comfortable
@@ -65,14 +61,14 @@ export default function HeroSection() {
             <motion.div variants={item} className="flex items-center gap-4">
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-background font-heading font-semibold text-sm rounded-md hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-heading font-semibold text-sm rounded-md hover:bg-accent/90 transition-all glow-sm"
               >
                 View Projects
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-border text-primary font-heading font-semibold text-sm rounded-md hover:border-primary/30 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(245,245,240,0.12)] text-primary font-heading font-semibold text-sm rounded-md hover:border-[rgba(245,245,240,0.25)] transition-colors"
               >
                 Get in Touch
               </Link>
@@ -85,7 +81,7 @@ export default function HeroSection() {
             variants={photoItem}
             className="shrink-0"
           >
-            <div className="relative">
+            <div className="relative glow rounded-md">
               <div className="w-64 h-64 sm:w-72 sm:h-72 relative">
                 <Image
                   src="/headshot.svg"
@@ -107,11 +103,7 @@ export default function HeroSection() {
                   strokeWidth="1.5"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={{
-                    ease: defaultEasing,
-                    duration: 0.6,
-                    delay: 0.6,
-                  }}
+                  transition={{ ease: defaultEasing, duration: 0.6, delay: 0.6 }}
                 />
               </svg>
               <svg
@@ -125,11 +117,7 @@ export default function HeroSection() {
                   strokeWidth="1.5"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={{
-                    ease: defaultEasing,
-                    duration: 0.6,
-                    delay: 0.6,
-                  }}
+                  transition={{ ease: defaultEasing, duration: 0.6, delay: 0.6 }}
                 />
               </svg>
             </div>

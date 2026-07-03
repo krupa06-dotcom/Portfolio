@@ -15,18 +15,18 @@ export default function FeaturedProjects({
   return (
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-end justify-between mb-10">
+        <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="font-mono text-xs text-muted tracking-[0.08em] uppercase mb-2">
+            <p className="font-mono text-xs text-accent tracking-[0.12em] uppercase mb-2">
               Selected Work
             </p>
-            <h2 className="font-heading font-semibold text-3xl tracking-[-0.02em]">
+            <h2 className="font-heading font-semibold text-3xl sm:text-4xl tracking-[-0.03em]">
               Featured Projects
             </h2>
           </div>
           <Link
             href="/projects"
-            className="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
+            className="hidden sm:inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
           >
             View All
             <ArrowRight className="w-3.5 h-3.5" />
@@ -37,7 +37,7 @@ export default function FeaturedProjects({
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={cardStagger}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>
@@ -45,10 +45,10 @@ export default function FeaturedProjects({
             </motion.div>
           ))}
         </motion.div>
-        <div className="mt-8 text-center sm:hidden">
+        <div className="mt-10 text-center sm:hidden">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
+            className="inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
           >
             View All Projects
             <ArrowRight className="w-3.5 h-3.5" />

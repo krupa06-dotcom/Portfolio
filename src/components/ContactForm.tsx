@@ -15,13 +15,13 @@ export default function ContactForm() {
       {success ? (
         <motion.p
           key="success"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
           transition={{ ease: defaultEasing, duration: 0.3 }}
           className="text-accent font-heading font-semibold text-lg"
         >
-          Thanks! I&apos;ll get back to you soon.
+          Thanks for reaching out! I&apos;ll get back to you soon.
         </motion.p>
       ) : (
         <motion.form
@@ -43,7 +43,7 @@ export default function ContactForm() {
           <div>
             <label
               htmlFor="name"
-              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted/60 mb-1.5"
             >
               Name
             </label>
@@ -52,14 +52,14 @@ export default function ContactForm() {
               id="name"
               name="name"
               required
-              className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors duration-150"
+              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,245,240,0.06)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200"
               placeholder="Your name"
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted/60 mb-1.5"
             >
               Email
             </label>
@@ -68,14 +68,14 @@ export default function ContactForm() {
               id="email"
               name="email"
               required
-              className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors duration-150"
+              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,245,240,0.06)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200"
               placeholder="your@email.com"
             />
           </div>
           <div>
             <label
               htmlFor="message"
-              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted mb-1.5"
+              className="block font-mono text-xs tracking-[0.08em] uppercase text-muted/60 mb-1.5"
             >
               Message
             </label>
@@ -84,19 +84,19 @@ export default function ContactForm() {
               name="message"
               rows={4}
               required
-              className="w-full bg-surface border border-border rounded-md px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent transition-colors duration-150 resize-none"
+              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,245,240,0.06)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200 resize-none"
               placeholder="Your message..."
             />
           </div>
           <button
             type="submit"
             disabled={pending}
-            className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent text-background font-heading font-semibold text-sm rounded-md hover:bg-accent/90 transition-colors disabled:opacity-70"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-heading font-semibold text-sm rounded-lg hover:bg-accent/90 transition-all disabled:opacity-60 glow-sm"
           >
             {pending ? (
               <>
                 Sending
-                <span className="inline-block w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               </>
             ) : (
               "Send Message"

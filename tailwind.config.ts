@@ -9,12 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0B0B0C",
-        surface: "#17171A",
-        border: "rgba(244,243,239,0.08)",
-        primary: "#F4F3EF",
-        muted: "#8C8A85",
-        accent: "#C8FF4D",
+        background: "#0A0A0B",
+        surface: "#141416",
+        border: "rgba(245, 245, 240, 0.06)",
+        primary: "#F5F5F0",
+        muted: "#8A8A86",
+        accent: "#FF3B3B",
       },
       fontFamily: {
         heading: ["Space Grotesk", "sans-serif"],
@@ -22,7 +22,7 @@ const config: Config = {
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
-        md: "6px",
+        md: "8px",
       },
     },
   },

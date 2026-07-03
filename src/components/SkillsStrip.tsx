@@ -21,12 +21,17 @@ export default function SkillsStrip() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={tagStagger}
-      className="py-16 border-y border-border"
+      className="relative py-12"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="absolute inset-0 border-y border-[rgba(245,245,240,0.04)]" />
+      <div className="max-w-6xl mx-auto px-6 relative">
         <div className="flex flex-wrap gap-2 justify-center">
           {skills.map((skill) => (
-            <motion.span key={skill} variants={tagVariants} className="tag">
+            <motion.span
+              key={skill}
+              variants={tagVariants}
+              className="font-mono text-[11px] uppercase tracking-[0.08em] px-3 py-1.5 rounded-md text-muted/80 border border-[rgba(245,245,240,0.06)] hover:border-accent/40 hover:text-accent transition-colors duration-200"
+            >
               {skill}
             </motion.span>
           ))}

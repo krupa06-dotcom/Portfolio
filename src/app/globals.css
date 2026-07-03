@@ -5,16 +5,27 @@
 @layer base {
   body {
     @apply bg-background text-primary font-body antialiased;
+    background-image: radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(255, 59, 59, 0.06),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 80% 80%,
+        rgba(255, 59, 59, 0.04),
+        transparent
+      );
+    background-attachment: fixed;
   }
 
   ::selection {
-    background-color: rgba(200, 255, 77, 0.2);
-    color: #F4F3EF;
+    background-color: rgba(255, 59, 59, 0.25);
+    color: #f5f5f0;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(244, 243, 239, 0.08) transparent;
+    scrollbar-color: rgba(245, 245, 240, 0.06) transparent;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -31,11 +42,23 @@
 
 @layer components {
   .hairline {
-    @apply border border-[rgba(244,243,239,0.08)];
+    @apply border border-[rgba(245,245,240,0.06)];
   }
 
   .tag {
-    @apply font-mono text-[11px] uppercase tracking-[0.08em] px-3 py-1 hairline rounded-md text-muted;
+    @apply font-mono text-[11px] uppercase tracking-[0.08em] px-3 py-1.5 hairline rounded-md text-muted;
+  }
+
+  .glow {
+    box-shadow: 0 0 60px rgba(255, 59, 59, 0.15), 0 0 120px rgba(255, 59, 59, 0.05);
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 30px rgba(255, 59, 59, 0.1);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary to-accent/80;
   }
 }
 

@@ -1,10 +1,13 @@
 import ExperienceTimeline from "@/components/ExperienceTimeline";
-import { getExperiences } from "../actions";
+import { getExperience, getHackathons } from "../actions";
 
 export const dynamic = "force-dynamic";
 
 export default async function ExperiencePage() {
-  const experiences = await getExperiences();
+  const [experience, hackathons] = await Promise.all([
+    getExperience(),
+    getHackathons(),
+  ]);
 
   return (
     <div className="pt-32 pb-24">
@@ -21,14 +24,14 @@ export default async function ExperiencePage() {
           </p>
         </div>
 
-        {experiences.length === 0 ? (
+        {experience.length === 0 && hackathons.length === 0 ? (
           <div className="py-20 text-center">
             <p className="text-muted font-mono text-xs tracking-[0.08em] uppercase">
               No experience entries yet
             </p>
           </div>
         ) : (
-          <ExperienceTimeline experiences={experiences} />
+          <ExperienceTimeline experience={experience} hackathons={hackathons} />
         )}
       </div>
     </div>

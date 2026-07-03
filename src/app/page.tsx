@@ -1,4 +1,4 @@
-import { getFeaturedProjects, getExperiences } from "./actions";
+import { getFeaturedProjects, getExperience } from "./actions";
 import HeroSection from "@/components/HeroSection";
 import SkillsStrip from "@/components/SkillsStrip";
 import FeaturedProjects from "@/components/FeaturedProjects";
@@ -6,19 +6,17 @@ import ExperiencePreview from "@/components/ExperiencePreview";
 import ContactCTA from "@/components/ContactCTA";
 
 export default async function HomePage() {
-  const [projects, experiences] = await Promise.all([
+  const [projects, experience] = await Promise.all([
     getFeaturedProjects(),
-    getExperiences(),
+    getExperience(),
   ]);
-
-  const internships = experiences.filter((e) => e.type === "internship");
 
   return (
     <>
       <HeroSection />
       <SkillsStrip />
       <FeaturedProjects projects={projects} />
-      <ExperiencePreview experiences={internships} />
+      <ExperiencePreview experiences={experience} />
       <ContactCTA />
     </>
   );
