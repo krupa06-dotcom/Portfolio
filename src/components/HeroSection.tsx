@@ -84,7 +84,7 @@ export default function HeroSection() {
             <div className="relative glow rounded-md">
               <div className="w-64 h-64 sm:w-72 sm:h-72 relative">
                 <Image
-                  src="/headshot.svg"
+                  src="/avatar.png"
                   alt="Krupa Parmar"
                   fill
                   className="object-cover rounded-md"
