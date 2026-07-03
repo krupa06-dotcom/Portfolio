@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import CinematicBackground from "@/components/CinematicBackground";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransitionWrapper from "@/components/PageTransitionWrapper";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-heading",
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -45,9 +45,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen flex flex-col">
+        <CinematicBackground />
         <Nav />
         <main className="flex-1">
           <PageTransitionWrapper>{children}</PageTransitionWrapper>

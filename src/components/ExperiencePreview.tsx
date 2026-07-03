@@ -24,7 +24,7 @@ export default function ExperiencePreview({
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="font-mono text-xs text-accent tracking-[0.12em] uppercase mb-2">
+            <p className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-2">
               Background
             </p>
             <h2 className="font-heading font-semibold text-3xl sm:text-4xl tracking-[-0.03em]">
@@ -54,10 +54,10 @@ export default function ExperiencePreview({
                   {formatDate(exp.start_date)}
                   {exp.end_date ? ` — ${formatDate(exp.end_date)}` : exp.start_date ? " — Present" : ""}
                 </p>
-                <h3 className="font-heading font-semibold text-lg tracking-[-0.02em]">
+                <h3 className="font-semibold text-lg tracking-[-0.02em]">
                   {exp.role}
                 </h3>
-                <p className="text-accent font-mono text-xs tracking-[0.08em] uppercase mt-0.5">
+                <p className="text-muted font-mono text-xs tracking-[0.08em] uppercase mt-0.5">
                   {exp.company}
                 </p>
                 <p className="text-sm text-muted/70 mt-1 leading-relaxed">

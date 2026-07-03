@@ -12,16 +12,16 @@ export default function ProjectCard({ project }: { project: Project }) {
       rel="noopener noreferrer"
       whileHover={{ y: -6 }}
       transition={{ ease: defaultEasing, duration: 0.25 }}
-      className="group block bg-surface/60 backdrop-blur-sm rounded-lg border border-[rgba(245,245,240,0.06)] overflow-hidden transition-all hover:border-accent/30 hover:bg-surface/80"
+      className="group block bg-surface/60 backdrop-blur-sm rounded-sm border border-[rgba(245,241,236,0.08)] overflow-hidden transition-all hover:border-accent/30 hover:bg-surface/80"
       style={{
-        boxShadow: "0 0 0 0 rgba(255, 59, 59, 0)",
+        boxShadow: "0 0 0 0 rgba(196, 70, 44, 0)",
         transition: "box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 0 40px rgba(255, 59, 59, 0.06)";
+        e.currentTarget.style.boxShadow = "0 0 40px rgba(196, 70, 44, 0.06)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "0 0 0 0 rgba(255, 59, 59, 0)";
+        e.currentTarget.style.boxShadow = "0 0 0 0 rgba(196, 70, 44, 0)";
       }}
     >
       <div className="relative aspect-video bg-surface/80 overflow-hidden">
@@ -41,7 +41,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       </div>
       <div className="p-5">
         <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-heading font-semibold text-primary text-lg tracking-[-0.02em]">
+          <h3 className="font-semibold text-primary text-lg tracking-[-0.02em]">
             {project.title}
           </h3>
           <ExternalLink className="w-4 h-4 text-muted/50 shrink-0 mt-1 transition-colors group-hover:text-accent" />
@@ -53,7 +53,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           {project.tags?.map((tag) => (
             <span
               key={tag}
-              className="font-mono text-[10px] uppercase tracking-[0.08em] px-2 py-1 rounded text-muted/50 border border-[rgba(245,245,240,0.06)]"
+              className="font-mono text-[10px] uppercase tracking-[0.08em] px-2 py-1 rounded text-muted/50 border border-[rgba(245,241,236,0.08)]"
             >
               {tag}
             </span>

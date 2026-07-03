@@ -17,7 +17,7 @@ export default function FeaturedProjects({
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <p className="font-mono text-xs text-accent tracking-[0.12em] uppercase mb-2">
+            <p className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-2">
               Selected Work
             </p>
             <h2 className="font-heading font-semibold text-3xl sm:text-4xl tracking-[-0.03em]">

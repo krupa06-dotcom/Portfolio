@@ -19,9 +19,9 @@ export default function Nav() {
   const blurPx = useTransform(scrollY, [0, 40], [0, 16]);
   const borderAlpha = useTransform(scrollY, [0, 40], [0, 0.06]);
 
-  const bg = useMotionTemplate`rgba(10, 10, 11, ${bgOpacity})`;
+  const bg = useMotionTemplate`rgba(18, 12, 12, ${bgOpacity})`;
   const blur = useMotionTemplate`blur(${blurPx}px)`;
-  const bdr = useMotionTemplate`rgba(245, 245, 240, ${borderAlpha})`;
+  const bdr = useMotionTemplate`rgba(245, 241, 236, ${borderAlpha})`;
 
   return (
     <motion.header
@@ -54,7 +54,7 @@ export default function Nav() {
                   layoutId="nav-indicator"
                   className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent rounded-full"
                   style={{
-                    boxShadow: "0 0 8px rgba(255, 59, 59, 0.5)",
+                    boxShadow: "0 0 8px rgba(196, 70, 44, 0.4)",
                   }}
                 />
               )}
@@ -64,7 +64,7 @@ export default function Nav() {
             href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/resume/resume.pdf`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-md hover:bg-accent/90 transition-all glow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-white font-semibold text-xs uppercase tracking-[0.08em] rounded-md hover:bg-accent/90 transition-all glow-sm"
           >
             Resume
           </a>

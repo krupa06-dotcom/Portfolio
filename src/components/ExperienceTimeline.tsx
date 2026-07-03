@@ -44,7 +44,7 @@ export default function ExperienceTimeline({
                   <div className="w-3 h-3 rounded-full bg-accent mt-1.5 glow-sm" />
                   {i < experience.length - 1 && (
                     <motion.div
-                      className="w-px flex-1 bg-[rgba(245,245,240,0.06)] mt-2 origin-top"
+                      className="w-px flex-1 bg-[rgba(245,241,236,0.08)] mt-2 origin-top"
                       variants={lineVariants}
                     />
                   )}
@@ -54,10 +54,10 @@ export default function ExperienceTimeline({
                     {formatDate(exp.start_date)}
                     {exp.end_date ? ` — ${formatDate(exp.end_date)}` : exp.start_date ? " — Present" : ""}
                   </div>
-                  <h3 className="font-heading font-semibold text-lg tracking-[-0.02em]">
+                  <h3 className="font-semibold text-lg tracking-[-0.02em]">
                     {exp.role}
                   </h3>
-                  <p className="text-accent font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
+                    <p className="text-muted/70 font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
                     {exp.company}
                   </p>
                   <p className="text-sm text-muted/70 leading-relaxed">
@@ -93,7 +93,7 @@ export default function ExperienceTimeline({
                   <div className="w-3 h-3 rounded-full bg-accent mt-1.5 glow-sm" />
                   {i < hackathons.length - 1 && (
                     <motion.div
-                      className="w-px flex-1 bg-[rgba(245,245,240,0.06)] mt-2 origin-top"
+                      className="w-px flex-1 bg-[rgba(245,241,236,0.08)] mt-2 origin-top"
                       variants={lineVariants}
                     />
                   )}
@@ -102,11 +102,11 @@ export default function ExperienceTimeline({
                   <div className="font-mono text-xs text-muted/50 tracking-[0.08em] uppercase mb-1">
                     {formatDate(h.date)}
                   </div>
-                  <h3 className="font-heading font-semibold text-lg tracking-[-0.02em]">
+                  <h3 className="font-semibold text-lg tracking-[-0.02em]">
                     {h.name}
                   </h3>
                   {h.result && (
-                    <p className="text-accent font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
+                    <p className="text-muted/70 font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
                       {h.result}
                     </p>
                   )}

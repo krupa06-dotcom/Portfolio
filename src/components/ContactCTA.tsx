@@ -15,7 +15,7 @@ export default function ContactCTA() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUpVariants}
-          className="font-mono text-xs text-accent tracking-[0.12em] uppercase mb-4"
+          className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-4"
         >
           Get in touch
         </motion.p>
@@ -45,7 +45,7 @@ export default function ContactCTA() {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-heading font-semibold text-sm rounded-lg hover:bg-accent/90 transition-all glow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-semibold text-sm rounded-md hover:bg-accent/90 transition-all glow-sm"
           >
             Let&apos;s Talk
             <ArrowRight className="w-4 h-4" />

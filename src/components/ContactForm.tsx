@@ -19,7 +19,7 @@ export default function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ ease: defaultEasing, duration: 0.3 }}
-          className="text-accent font-heading font-semibold text-lg"
+          className="text-muted font-semibold text-lg"
         >
           Thanks for reaching out! I&apos;ll get back to you soon.
         </motion.p>
@@ -52,7 +52,7 @@ export default function ContactForm() {
               id="name"
               name="name"
               required
-              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,245,240,0.06)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200"
+              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,241,236,0.08)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200"
               placeholder="Your name"
             />
           </div>
@@ -68,7 +68,7 @@ export default function ContactForm() {
               id="email"
               name="email"
               required
-              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,245,240,0.06)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200"
+              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,241,236,0.08)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200"
               placeholder="your@email.com"
             />
           </div>
@@ -84,14 +84,14 @@ export default function ContactForm() {
               name="message"
               rows={4}
               required
-              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,245,240,0.06)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200 resize-none"
+              className="w-full bg-surface/60 backdrop-blur-sm border border-[rgba(245,241,236,0.08)] rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:bg-surface/80 transition-all duration-200 resize-none"
               placeholder="Your message..."
             />
           </div>
           <button
             type="submit"
             disabled={pending}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-heading font-semibold text-sm rounded-lg hover:bg-accent/90 transition-all disabled:opacity-60 glow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-semibold text-sm rounded-md hover:bg-accent/90 transition-all disabled:opacity-60 glow-sm"
           >
             {pending ? (
               <>

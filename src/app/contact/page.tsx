@@ -28,7 +28,7 @@ export default function ContactPage() {
     <div className="pt-32 pb-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
-          <p className="font-mono text-xs text-accent tracking-[0.12em] uppercase mb-2">
+          <p className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-2">
             Connect
           </p>
           <h1 className="font-heading font-semibold text-4xl sm:text-5xl tracking-[-0.03em]">
@@ -55,14 +55,14 @@ export default function ContactPage() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="group flex items-center gap-4 py-4 border-b border-[rgba(245,245,240,0.06)] hover:border-accent/20 transition-colors"
+                    className="group flex items-center gap-4 py-4 border-b border-[rgba(245,241,236,0.08)] hover:border-accent/20 transition-colors"
                   >
                     <Icon className="w-5 h-5 text-muted/50 group-hover:text-accent transition-colors shrink-0" />
                     <div>
                       <p className="font-mono text-xs tracking-[0.08em] uppercase text-muted/50">
                         {link.label}
                       </p>
-                      <p className="font-heading font-semibold tracking-[-0.02em] group-hover:text-accent transition-colors">
+                      <p className="font-semibold tracking-[-0.02em] group-hover:text-accent transition-colors">
                         {link.value}
                       </p>
                     </div>

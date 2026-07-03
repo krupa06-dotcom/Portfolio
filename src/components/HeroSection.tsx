@@ -33,19 +33,19 @@ export default function HeroSection() {
           >
             <motion.p
               variants={item}
-              className="font-mono text-xs text-accent tracking-[0.12em] uppercase mb-5"
+              className="font-mono text-xs text-muted tracking-[0.12em] uppercase mb-5"
             >
               Full-Stack Developer &middot; UI/UX
             </motion.p>
             <motion.h1
               variants={item}
-              className="font-heading font-bold text-5xl sm:text-6xl lg:text-7xl tracking-[-0.03em] leading-[1.05] mb-3 gradient-text"
+              className="font-heading font-bold text-5xl sm:text-6xl lg:text-7xl tracking-[-0.03em] leading-[1.05] mb-3 text-primary"
             >
               Krupa Parmar
             </motion.h1>
             <motion.p
               variants={item}
-              className="font-heading font-semibold text-xl sm:text-2xl text-muted tracking-[-0.02em] mb-4"
+              className="text-xl sm:text-2xl text-muted tracking-[-0.02em] mb-4"
             >
               I build things end-to-end.
             </motion.p>
@@ -61,16 +61,17 @@ export default function HeroSection() {
             <motion.div variants={item} className="flex items-center gap-4">
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-heading font-semibold text-sm rounded-md hover:bg-accent/90 transition-all glow-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-semibold text-sm rounded-md hover:bg-accent/90 transition-all glow-sm"
               >
                 View Projects
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-[rgba(245,245,240,0.12)] text-primary font-heading font-semibold text-sm rounded-md hover:border-[rgba(245,245,240,0.25)] transition-colors"
+                className="inline-flex items-center gap-1 text-sm text-muted/60 font-semibold hover:text-primary transition-colors"
               >
                 Get in Touch
+                <ArrowRight className="w-3 h-3" />
               </Link>
             </motion.div>
           </motion.div>
@@ -81,45 +82,18 @@ export default function HeroSection() {
             variants={photoItem}
             className="shrink-0"
           >
-            <div className="relative glow rounded-md">
+            <div className="relative glow rounded-sm overflow-hidden">
               <div className="w-64 h-64 sm:w-72 sm:h-72 relative">
                 <Image
                   src="/avatar.png"
                   alt="Krupa Parmar"
                   fill
-                  className="object-cover rounded-md"
+                  className="object-cover grayscale contrast-125 brightness-75"
                   sizes="(max-width: 640px) 256px, 288px"
                   priority
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-accent/25 to-transparent pointer-events-none" />
               </div>
-              <svg
-                className="absolute -top-2 -left-2 w-6 h-6 text-accent"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <motion.path
-                  d="M24 0.5H0.5V24"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ ease: defaultEasing, duration: 0.6, delay: 0.6 }}
-                />
-              </svg>
-              <svg
-                className="absolute -bottom-2 -right-2 w-6 h-6 text-accent"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <motion.path
-                  d="M0 23.5H23.5V0"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ ease: defaultEasing, duration: 0.6, delay: 0.6 }}
-                />
-              </svg>
             </div>
           </motion.div>
         </div>

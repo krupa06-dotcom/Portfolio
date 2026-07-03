@@ -9,20 +9,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0A0A0B",
-        surface: "#141416",
-        border: "rgba(245, 245, 240, 0.06)",
-        primary: "#F5F5F0",
-        muted: "#8A8A86",
-        accent: "#FF3B3B",
+        background: "#120C0C",
+        surface: "#1A1414",
+        border: "rgba(245, 241, 236, 0.08)",
+        primary: "#F5F1EC",
+        muted: "#A69C97",
+        accent: "#C4462C",
       },
       fontFamily: {
-        heading: ["Space Grotesk", "sans-serif"],
+        heading: ["Fraunces", "serif"],
+        display: ["Fraunces", "serif"],
         body: ["Inter", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
-        md: "8px",
+        md: "4px",
+      },
+      animation: {
+        "aurora-1": "aurora-1 22s ease-in-out infinite alternate",
+        "aurora-2": "aurora-2 18s ease-in-out infinite alternate",
+      },
+      keyframes: {
+        "aurora-1": {
+          "0%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(5%, 3%) scale(1.05)" },
+          "100%": { transform: "translate(2%, -2%) scale(0.95)" },
+        },
+        "aurora-2": {
+          "0%": { transform: "translate(0, 0) scale(1)" },
+          "50%": { transform: "translate(-4%, -2%) scale(1.08)" },
+          "100%": { transform: "translate(3%, 4%) scale(0.92)" },
+        },
       },
     },
   },
