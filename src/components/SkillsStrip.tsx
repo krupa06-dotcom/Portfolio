@@ -3,24 +3,20 @@
 import { motion } from "framer-motion";
 import { useReducedMotion } from "framer-motion";
 import { cardStagger, cardVariants } from "@/lib/motion";
+import type { Skill } from "@/lib/types";
 
-const skills = [
-  {
-    label: "FRONTEND",
-    items: ["React.js", "Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "HTML", "CSS"],
-  },
-  {
-    label: "BACKEND & DATABASE",
-    items: ["Node.js", "PHP", "SQL", "PostgreSQL"],
-  },
-  {
-    label: "TOOLS & WORKFLOW",
-    items: ["Git", "GitHub", "VS Code", "Figma"],
-  },
-];
-
-export default function SkillsStrip() {
+export default function SkillsStrip({ skills }: { skills: Skill[] }) {
   const prefersReducedMotion = useReducedMotion();
+
+  const groups = skills.reduce<{ label: string; items: string[] }[]>((acc, s) => {
+    const existing = acc.find((g) => g.label === s.category);
+    if (existing) {
+      existing.items.push(s.name);
+    } else {
+      acc.push({ label: s.category, items: [s.name] });
+    }
+    return acc;
+  }, []);
 
   return (
     <section className="w-full py-24 max-md:py-16" style={{ backgroundColor: "#B3382C" }}>
@@ -48,7 +44,7 @@ export default function SkillsStrip() {
           whileInView={!prefersReducedMotion ? "visible" : undefined}
           viewport={{ once: true, margin: "-40px" }}
         >
-          {skills.map((group, index) => (
+          {groups.map((group) => (
             <motion.div
               key={group.label}
               variants={!prefersReducedMotion ? cardVariants : undefined}

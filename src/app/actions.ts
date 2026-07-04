@@ -236,6 +236,51 @@ export async function markMessageRead(id: string, isRead: boolean) {
   revalidatePath("/admin");
 }
 
+/* ────────────── Skills ────────────── */
+
+export async function getSkills() {
+  const supabase = createClient();
+  const { data } = await supabase
+    .from("skills")
+    .select("*")
+    .order("sort_order", { ascending: true });
+
+  return data ?? [];
+}
+
+export async function upsertSkill(formData: FormData) {
+  const supabase = createAdminClient();
+
+  const id = formData.get("id");
+  const payload: Record<string, unknown> = {
+    category: formData.get("category"),
+    name: formData.get("name"),
+    sort_order: Number(formData.get("sort_order")) || 0,
+  };
+
+  if (id && id !== "new") {
+    const { error } = await supabase
+      .from("skills")
+      .update(payload)
+      .eq("id", id);
+    if (error) throw new Error(error.message);
+  } else {
+    const { error } = await supabase.from("skills").insert(payload);
+    if (error) throw new Error(error.message);
+  }
+
+  revalidatePath("/");
+  revalidatePath("/admin");
+}
+
+export async function deleteSkill(id: string) {
+  const supabase = createAdminClient();
+  const { error } = await supabase.from("skills").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath("/");
+  revalidatePath("/admin");
+}
+
 /* ────────────── Profile ────────────── */
 
 export async function getProfile() {

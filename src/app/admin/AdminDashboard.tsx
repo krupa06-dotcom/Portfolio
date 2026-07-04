@@ -9,6 +9,7 @@ import {
   Trophy,
   Mail,
   User,
+  Code2,
   Plus,
   ExternalLink,
   Pencil,
@@ -19,7 +20,7 @@ import {
   Inbox,
   LogOut,
 } from "lucide-react";
-import type { Project, Experience, Hackathon, Message, Profile } from "@/lib/types";
+import type { Project, Experience, Hackathon, Message, Profile, Skill } from "@/lib/types";
 import {
   upsertProject,
   deleteProject,
@@ -27,6 +28,8 @@ import {
   deleteExperience,
   upsertHackathon,
   deleteHackathon,
+  upsertSkill,
+  deleteSkill,
   upsertProfile,
   markMessageRead,
   uploadFile,
@@ -39,14 +42,16 @@ type Props = {
   hackathons: Hackathon[];
   messages: Message[];
   profile: Profile | null;
+  skills: Skill[];
 };
 
-type Tab = "projects" | "experience" | "hackathons" | "messages" | "profile";
+type Tab = "projects" | "experience" | "hackathons" | "skills" | "messages" | "profile";
 
 const tabs: { id: Tab; label: string; icon: typeof Folder }[] = [
   { id: "projects", label: "Projects", icon: Folder },
   { id: "experience", label: "Experience", icon: Briefcase },
   { id: "hackathons", label: "Hackathons", icon: Trophy },
+  { id: "skills", label: "Skills", icon: Code2 },
   { id: "messages", label: "Messages", icon: Mail },
   { id: "profile", label: "Profile", icon: User },
 ];
@@ -57,6 +62,7 @@ export default function AdminDashboard({
   hackathons,
   messages,
   profile,
+  skills,
 }: Props) {
   const router = useRouter();
   const [tab, setTab] = useState<Tab>("projects");
@@ -64,6 +70,7 @@ export default function AdminDashboard({
   const [editingProject, setEditingProject] = useState<Project | "new" | null>(null);
   const [editingExperience, setEditingExperience] = useState<Experience | "new" | null>(null);
   const [editingHackathon, setEditingHackathon] = useState<Hackathon | "new" | null>(null);
+  const [editingSkill, setEditingSkill] = useState<Skill | "new" | null>(null);
 
   async function handleProjectSubmit(formData: FormData) {
     await upsertProject(formData);
@@ -80,6 +87,12 @@ export default function AdminDashboard({
   async function handleHackathonSubmit(formData: FormData) {
     await upsertHackathon(formData);
     setEditingHackathon(null);
+    router.refresh();
+  }
+
+  async function handleSkillSubmit(formData: FormData) {
+    await upsertSkill(formData);
+    setEditingSkill(null);
     router.refresh();
   }
 
@@ -348,6 +361,61 @@ export default function AdminDashboard({
                             label="Delete"
                             onClick={async () => {
                               await deleteHackathon(h.id);
+                              router.refresh();
+                            }}
+                            confirm
+                            color="red"
+                          />
+                        </>
+                      }
+                    />
+                  ))}
+                </div>
+              )}
+            </Section>
+          )}
+
+          {/* ────────── Skills Tab ────────── */}
+          {tab === "skills" && (
+            <Section
+              title="Skills"
+              addLabel="Add Skill"
+              onAdd={() => setEditingSkill("new")}
+              count={skills.length}
+            >
+              {editingSkill && (
+                <SkillForm
+                  skill={editingSkill === "new" ? null : editingSkill}
+                  onSubmit={handleSkillSubmit}
+                  onCancel={() => setEditingSkill(null)}
+                />
+              )}
+
+              {skills.length === 0 ? (
+                <EmptyState
+                  icon={Code2}
+                  message="No skills added yet"
+                  action="Add skills to display on your Skills section."
+                />
+              ) : (
+                <div className="space-y-2">
+                  {skills.map((s) => (
+                    <ListItem
+                      key={s.id}
+                      title={s.name}
+                      subtitle={s.category}
+                      actions={
+                        <>
+                          <IconButton
+                            icon={Pencil}
+                            label="Edit"
+                            onClick={() => setEditingSkill(s)}
+                          />
+                          <IconButton
+                            icon={Trash2}
+                            label="Delete"
+                            onClick={async () => {
+                              await deleteSkill(s.id);
                               router.refresh();
                             }}
                             confirm
@@ -1007,6 +1075,74 @@ function HackathonForm({
           className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
         >
           {hackathon ? "Update Hackathon" : "Create Hackathon"}
+        </button>
+        <button
+          type="button"
+          onClick={onCancel}
+          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
+        >
+          Cancel
+        </button>
+      </div>
+    </FormCard>
+  );
+}
+
+/* ────────── Skill Form ────────── */
+
+function SkillForm({
+  skill,
+  onSubmit,
+  onCancel,
+}: {
+  skill: Skill | null;
+  onSubmit: (data: FormData) => Promise<void>;
+  onCancel: () => void;
+}) {
+  return (
+    <FormCard
+      title={skill ? "Edit Skill" : "New Skill"}
+      onSubmit={onSubmit}
+      onCancel={onCancel}
+    >
+      <input type="hidden" name="id" value={skill?.id ?? "new"} />
+      <div className="grid sm:grid-cols-2 gap-4">
+        <Field label="Category">
+          <select
+            name="category"
+            defaultValue={skill?.category ?? "FRONTEND"}
+            required
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+          >
+            <option value="FRONTEND">FRONTEND</option>
+            <option value="BACKEND & DATABASE">BACKEND & DATABASE</option>
+            <option value="TOOLS & WORKFLOW">TOOLS & WORKFLOW</option>
+          </select>
+        </Field>
+        <Field label="Name">
+          <input
+            type="text"
+            name="name"
+            defaultValue={skill?.name ?? ""}
+            required
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+          />
+        </Field>
+        <Field label="Sort Order">
+          <input
+            type="number"
+            name="sort_order"
+            defaultValue={skill?.sort_order ?? 0}
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+          />
+        </Field>
+      </div>
+      <div className="flex items-center gap-3 pt-2">
+        <button
+          type="submit"
+          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
+        >
+          {skill ? "Update Skill" : "Create Skill"}
         </button>
         <button
           type="button"

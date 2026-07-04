@@ -5,6 +5,7 @@ import {
   getHackathons,
   getMessages,
   getProfile,
+  getSkills,
 } from "../actions";
 import AdminLogin from "./AdminLogin";
 import AdminDashboard from "./AdminDashboard";
@@ -18,13 +19,14 @@ export default async function AdminPage() {
     return <AdminLogin />;
   }
 
-  const [projects, experience, hackathons, messages, profile] =
+  const [projects, experience, hackathons, messages, profile, skills] =
     await Promise.all([
       getProjects(),
       getExperience(),
       getHackathons(),
       getMessages(),
       getProfile(),
+      getSkills(),
     ]);
 
   return (
@@ -34,6 +36,7 @@ export default async function AdminPage() {
       hackathons={hackathons}
       messages={messages}
       profile={profile}
+      skills={skills}
     />
   );
 }

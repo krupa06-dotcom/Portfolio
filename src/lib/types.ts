@@ -29,6 +29,13 @@ export type Hackathon = {
   sort_order: number;
 };
 
+export type Skill = {
+  id: string;
+  category: string;
+  name: string;
+  sort_order: number;
+};
+
 export type Profile = {
   id: number;
   bio: string | null;

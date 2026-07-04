@@ -42,6 +42,14 @@ create table if not exists messages (
   is_read boolean default false
 );
 
+-- skills (categorized, shown on SkillsStrip section)
+create table if not exists skills (
+  id uuid primary key default gen_random_uuid(),
+  category text not null,
+  name text not null,
+  sort_order int default 0
+);
+
 -- profile (single row — bio, resume, headshot)
 create table if not exists profile (
   id int primary key default 1,
@@ -57,6 +65,7 @@ alter table projects enable row level security;
 alter table experience enable row level security;
 alter table hackathons enable row level security;
 alter table messages enable row level security;
+alter table skills enable row level security;
 alter table profile enable row level security;
 
 -- Public select on projects, experience, hackathons, profile
@@ -64,6 +73,9 @@ create policy "Public select projects" on projects for select to anon using (tru
 create policy "Public select experience" on experience for select to anon using (true);
 create policy "Public select hackathons" on hackathons for select to anon using (true);
 create policy "Public select profile" on profile for select to anon using (true);
+
+-- Public select on skills
+create policy "Public select skills" on skills for select to anon using (true);
 
 -- Public insert-only on messages (no public select/update/delete)
 create policy "Public insert messages" on messages for insert to anon with check (true);
@@ -116,6 +128,24 @@ insert into projects (title, description, url, cover_image_url, tags, is_feature
     true,
     3
   );
+
+-- Seed data: skills
+insert into skills (category, name, sort_order) values
+  ('FRONTEND', 'React.js', 1),
+  ('FRONTEND', 'Next.js', 2),
+  ('FRONTEND', 'JavaScript', 3),
+  ('FRONTEND', 'TypeScript', 4),
+  ('FRONTEND', 'Tailwind CSS', 5),
+  ('FRONTEND', 'HTML', 6),
+  ('FRONTEND', 'CSS', 7),
+  ('BACKEND & DATABASE', 'Node.js', 1),
+  ('BACKEND & DATABASE', 'PHP', 2),
+  ('BACKEND & DATABASE', 'SQL', 3),
+  ('BACKEND & DATABASE', 'PostgreSQL', 4),
+  ('TOOLS & WORKFLOW', 'Git', 1),
+  ('TOOLS & WORKFLOW', 'GitHub', 2),
+  ('TOOLS & WORKFLOW', 'VS Code', 3),
+  ('TOOLS & WORKFLOW', 'Figma', 4);
 
 -- Seed profile
 insert into profile (id, bio, skills) values (
