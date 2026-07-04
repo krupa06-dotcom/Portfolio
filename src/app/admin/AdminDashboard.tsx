@@ -102,11 +102,11 @@ export default function AdminDashboard({
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:sticky top-16 left-0 z-50 h-[calc(100vh-4rem)] w-60 bg-surface/90 backdrop-blur-xl border-r border-border transition-transform duration-200 lg:translate-x-0 ${
+        className={`fixed lg:sticky top-16 left-0 z-50 h-[calc(100vh-4rem)] w-60 bg-surface backdrop-blur-xl border-r border-border/80 transition-transform duration-200 lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="p-4 border-b border-border">
+        <div className="p-4 border-b border-border/80">
           <p className="font-heading font-semibold text-sm tracking-[-0.02em]">
             Admin Panel
           </p>
@@ -128,14 +128,14 @@ export default function AdminDashboard({
                 }}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-body transition-all ${
                   isActive
-                    ? "bg-accent/10 text-accent border border-accent/20"
-                    : "text-muted hover:text-primary hover:bg-surface border border-transparent"
+                    ? "bg-surface text-primary border border-border/80"
+                    : "text-muted hover:text-primary hover:bg-[#E3DACE] border border-transparent"
                 }`}
               >
                 <Icon className="w-4 h-4 shrink-0" />
                 <span className="font-medium">{t.label}</span>
                 {t.id === "messages" && unreadCount > 0 && (
-                  <span className="ml-auto flex items-center justify-center w-5 h-5 rounded-full bg-accent text-[10px] font-mono text-white font-medium">
+                  <span className="ml-auto flex items-center justify-center w-5 h-5 rounded-full bg-primary/10 text-[10px] font-mono text-primary/60 font-medium">
                     {unreadCount}
                   </span>
                 )}
@@ -144,10 +144,10 @@ export default function AdminDashboard({
           })}
         </nav>
 
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border/80">
           <button
             onClick={handleSignOut}
-            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm text-muted hover:text-primary hover:bg-surface transition-all"
+            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm text-muted hover:text-primary hover:bg-[#E3DACE] transition-all"
           >
             <LogOut className="w-4 h-4" />
             Sign Out
@@ -158,7 +158,7 @@ export default function AdminDashboard({
       {/* Main content */}
       <div className="flex-1 min-w-0">
         {/* Top bar (mobile) */}
-        <div className="lg:hidden flex items-center gap-3 p-4 border-b border-border">
+        <div className="lg:hidden flex items-center gap-3 p-4 border-b border-border/80">
           <button
             onClick={() => setSidebarOpen(true)}
             className="p-2 -ml-2 text-muted hover:text-primary"
@@ -221,7 +221,7 @@ export default function AdminDashboard({
                       key={project.id}
                       title={project.title}
                       subtitle={project.url}
-                      badge={project.is_featured ? { label: "Featured", color: "accent" } : undefined}
+                      badge={project.is_featured ? { label: "Featured", color: "primary" } : undefined}
                       actions={
                         <>
                           <IconButton href={project.url} icon={ExternalLink} label="Open" />
@@ -334,7 +334,7 @@ export default function AdminDashboard({
                       key={h.id}
                       title={h.name}
                       subtitle={h.date ? new Date(h.date).toLocaleDateString("en-US", { year: "numeric", month: "short" }) : undefined}
-                      badge={h.result ? { label: h.result, color: "accent" } : undefined}
+                      badge={h.result ? { label: h.result, color: "primary" } : undefined}
                       actions={
                         <>
                           {h.url && <IconButton href={h.url} icon={ExternalLink} label="Open" />}
@@ -378,8 +378,8 @@ export default function AdminDashboard({
                       key={msg.id}
                       className={`group rounded-xl border transition-all ${
                         msg.is_read
-                          ? "bg-surface/50 border-border opacity-60 hover:opacity-100"
-                          : "bg-surface border-accent/20"
+                           ? "bg-[#E3DACE] border-border/80 opacity-60 hover:opacity-100"
+                          : "bg-surface border-border/80"
                       }`}
                     >
                       <div className="p-4 sm:p-5">
@@ -390,7 +390,7 @@ export default function AdminDashboard({
                                 {msg.name}
                               </span>
                               {!msg.is_read && (
-                                <span className="w-2 h-2 rounded-full bg-accent glow-sm" />
+                                <span className="w-2 h-2 rounded-full bg-primary/20" />
                               )}
                               <span className="text-xs text-muted/60 font-mono">
                                 {msg.email}
@@ -411,10 +411,10 @@ export default function AdminDashboard({
                               await markMessageRead(msg.id, !msg.is_read);
                               router.refresh();
                             }}
-                            className={`shrink-0 p-2 rounded-lg border transition-all ${
+                             className={`shrink-0 p-2 rounded-lg border transition-all ${
                               msg.is_read
-                                ? "border-border text-muted/40 hover:text-accent hover:border-accent/30"
-                                : "border-accent/20 text-accent hover:text-muted hover:border-border"
+                                ? "border-border/80 text-muted/50 hover:text-primary hover:border-primary/20"
+                                : "border-border/80 text-muted hover:text-primary hover:border-primary/20"
                             }`}
                             title={msg.is_read ? "Mark as unread" : "Mark as read"}
                           >
@@ -460,14 +460,14 @@ function StatCard({
   sub?: string;
 }) {
   return (
-    <div className="bg-surface/50 rounded-xl border border-border p-4">
-      <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-3">
-        <Icon className="w-4 h-4 text-accent" />
+    <div className="bg-surface rounded-xl border border-border/80 p-4">
+      <div className="w-8 h-8 rounded-lg bg-surface border border-border/60 flex items-center justify-center mb-3">
+        <Icon className="w-4 h-4 text-muted" />
       </div>
       <p className="text-2xl font-heading font-semibold tracking-[-0.02em]">{count}</p>
       <div className="flex items-center gap-2">
         <p className="text-[11px] text-muted/60 font-mono tracking-[0.08em] uppercase">{label}</p>
-        {sub && <span className="text-[10px] text-accent font-mono">{sub}</span>}
+        {sub && <span className="text-[10px] text-muted font-mono">{sub}</span>}
       </div>
     </div>
   );
@@ -502,7 +502,7 @@ function Section({
         {addLabel && onAdd && (
           <button
             onClick={onAdd}
-            className="flex items-center gap-1.5 px-4 py-2 bg-accent text-white font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent/90 transition-all glow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
           >
             <Plus className="w-3.5 h-3.5" />
             {addLabel}
@@ -524,7 +524,7 @@ function EmptyState({
   action: string;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center py-16 px-6 rounded-xl border border-dashed border-border">
+    <div className="flex flex-col items-center justify-center py-16 px-6 rounded-xl border border-dashed border-border/60">
       <div className="w-12 h-12 rounded-xl bg-surface flex items-center justify-center mb-4">
         <Icon className="w-6 h-6 text-muted/30" />
       </div>
@@ -548,7 +548,7 @@ function ListItem({
   actions: React.ReactNode;
 }) {
   return (
-    <div className="group flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 bg-surface/50 rounded-xl border border-border hover:border-accent/10 transition-all">
+    <div className="group flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 bg-surface rounded-xl border border-border/80 hover:border-primary/10 transition-all">
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2 flex-wrap">
           <h3 className="font-heading font-semibold text-sm text-primary tracking-[-0.02em] truncate">
@@ -557,9 +557,9 @@ function ListItem({
           {badge && (
             <span
               className={`text-[10px] font-mono tracking-[0.08em] uppercase px-1.5 py-0.5 rounded border ${
-                badge.color === "accent"
-                  ? "text-accent border-accent/30"
-                  : "text-muted/50 border-border"
+                badge.color === "primary"
+                  ? "text-primary border-primary/20"
+                  : "text-muted/60 border-border/60"
               }`}
             >
               {badge.label}
@@ -598,8 +598,8 @@ function IconButton({
   }
 
   const classes = `p-2 rounded-lg border border-transparent text-muted/50 hover:text-${
-    color === "red" ? "red-400" : "accent"
-  } hover:border-${color === "red" ? "red-400/20" : "accent/20"} transition-all`;
+    color === "red" ? "red-400" : "primary"
+  } hover:border-${color === "red" ? "red-400/20" : "primary/10"} transition-all`;
 
   if (href) {
     return (
@@ -669,7 +669,7 @@ function UploadButton({
         type="button"
         onClick={() => inputRef.current?.click()}
         disabled={uploading}
-        className="flex items-center gap-1.5 px-3 py-2 border border-border rounded-lg text-xs text-muted/60 font-body hover:text-primary hover:border-accent/30 transition-all disabled:opacity-60"
+        className="flex items-center gap-1.5 px-3 py-2 border border-border/80 rounded-lg text-xs text-muted/60 font-body hover:text-primary hover:border-primary/20 transition-all disabled:opacity-60"
       >
         <Upload className="w-3.5 h-3.5" />
         {uploading ? "Uploading..." : "Upload"}
@@ -697,9 +697,9 @@ function FormCard({
   return (
     <form
       action={onSubmit}
-      className="mb-8 p-5 sm:p-6 bg-surface rounded-xl border border-accent/20 space-y-5"
+      className="mb-8 p-5 sm:p-6 bg-surface rounded-xl border border-border/80 space-y-5"
     >
-      <div className="flex items-center justify-between pb-4 border-b border-border">
+        <div className="flex items-center justify-between pb-4 border-b border-border/80">
         <h3 className="font-heading font-semibold text-sm tracking-[-0.02em]">{title}</h3>
         <button
           type="button"
@@ -758,7 +758,7 @@ function ProjectForm({
             name="title"
             defaultValue={project?.title ?? ""}
             required
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="URL">
@@ -767,7 +767,7 @@ function ProjectForm({
             name="url"
             defaultValue={project?.url ?? ""}
             required
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="Cover Image">
@@ -778,7 +778,7 @@ function ProjectForm({
               value={coverUrl}
               onChange={(e) => setCoverUrl(e.target.value)}
               placeholder="https://..."
-              className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all font-mono text-xs"
+              className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
             />
             <UploadButton bucket="project-covers" onUploaded={(url) => setCoverUrl(url)} />
           </div>
@@ -795,7 +795,7 @@ function ProjectForm({
             defaultValue={
               project ? JSON.stringify(project.tags) : '["NEXT.JS","SUPABASE"]'
             }
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all font-mono text-xs"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
           />
         </Field>
         <Field label="Sort Order">
@@ -803,7 +803,7 @@ function ProjectForm({
             type="number"
             name="sort_order"
             defaultValue={project?.sort_order ?? 0}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <div className="flex items-end pb-2.5">
@@ -813,7 +813,7 @@ function ProjectForm({
               name="is_featured"
               value="true"
               defaultChecked={project?.is_featured ?? false}
-              className="w-4 h-4 rounded border-border bg-background accent-accent"
+              className="w-4 h-4 rounded border-border/80 bg-background accent-primary"
             />
             <span className="font-mono text-xs tracking-[0.08em] uppercase text-muted/60 group-hover:text-muted transition-colors">
               Featured project
@@ -827,20 +827,20 @@ function ProjectForm({
           defaultValue={project?.description ?? ""}
           required
           rows={3}
-          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all resize-none"
+          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
         />
       </Field>
       <div className="flex items-center gap-3 pt-2">
         <button
           type="submit"
-          className="px-5 py-2.5 bg-accent text-white font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent/90 transition-all glow-sm"
+          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
         >
           {project ? "Update Project" : "Create Project"}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="px-5 py-2.5 border border-border text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-accent/30 transition-all"
+          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
         >
           Cancel
         </button>
@@ -874,7 +874,7 @@ function ExperienceForm({
             name="role"
             defaultValue={experience?.role ?? ""}
             required
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="Company">
@@ -883,7 +883,7 @@ function ExperienceForm({
             name="company"
             defaultValue={experience?.company ?? ""}
             required
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="Start Date">
@@ -891,7 +891,7 @@ function ExperienceForm({
             type="date"
             name="start_date"
             defaultValue={experience?.start_date?.slice(0, 10) ?? ""}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="End Date">
@@ -899,7 +899,7 @@ function ExperienceForm({
             type="date"
             name="end_date"
             defaultValue={experience?.end_date?.slice(0, 10) ?? ""}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="Sort Order">
@@ -907,7 +907,7 @@ function ExperienceForm({
             type="number"
             name="sort_order"
             defaultValue={experience?.sort_order ?? 0}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
       </div>
@@ -916,20 +916,20 @@ function ExperienceForm({
           name="description"
           defaultValue={experience?.description ?? ""}
           rows={3}
-          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all resize-none"
+          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
         />
       </Field>
       <div className="flex items-center gap-3 pt-2">
         <button
           type="submit"
-          className="px-5 py-2.5 bg-accent text-white font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent/90 transition-all glow-sm"
+          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
         >
           {experience ? "Update Experience" : "Create Experience"}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="px-5 py-2.5 border border-border text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-accent/30 transition-all"
+          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
         >
           Cancel
         </button>
@@ -963,7 +963,7 @@ function HackathonForm({
             name="name"
             defaultValue={hackathon?.name ?? ""}
             required
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="Result">
@@ -972,7 +972,7 @@ function HackathonForm({
             name="result"
             defaultValue={hackathon?.result ?? ""}
             placeholder='e.g. "Winner", "Finalist"'
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="Date">
@@ -980,7 +980,7 @@ function HackathonForm({
             type="date"
             name="date"
             defaultValue={hackathon?.date?.slice(0, 10) ?? ""}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="URL">
@@ -989,7 +989,7 @@ function HackathonForm({
             name="url"
             defaultValue={hackathon?.url ?? ""}
             placeholder="Devpost or event link"
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
         <Field label="Sort Order">
@@ -997,21 +997,21 @@ function HackathonForm({
             type="number"
             name="sort_order"
             defaultValue={hackathon?.sort_order ?? 0}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
           />
         </Field>
       </div>
       <div className="flex items-center gap-3 pt-2">
         <button
           type="submit"
-          className="px-5 py-2.5 bg-accent text-white font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent/90 transition-all glow-sm"
+          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
         >
           {hackathon ? "Update Hackathon" : "Create Hackathon"}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="px-5 py-2.5 border border-border text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-accent/30 transition-all"
+          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
         >
           Cancel
         </button>
@@ -1036,15 +1036,15 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
     <div>
       <Section title="Profile" count={1}>
         <form action={handleSubmit} className="space-y-6 max-w-2xl">
-          <div className="p-5 sm:p-6 bg-surface rounded-xl border border-border space-y-5">
-            <div className="flex items-center gap-4 pb-4 border-b border-border">
-              <div className="w-14 h-14 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center overflow-hidden shrink-0 relative">
-                {headshotUrl ? (
-                  <Image src={headshotUrl} alt="Headshot" fill className="object-cover" />
-                ) : (
-                  <User className="w-6 h-6 text-accent/60" />
-                )}
-              </div>
+      <div className="p-5 sm:p-6 bg-surface rounded-xl border border-border/80 space-y-5">
+        <div className="flex items-center gap-4 pb-4 border-b border-border/80">
+          <div className="w-14 h-14 rounded-xl bg-surface border border-border/60 flex items-center justify-center overflow-hidden shrink-0 relative">
+            {headshotUrl ? (
+              <Image src={headshotUrl} alt="Headshot" fill className="object-cover" />
+            ) : (
+              <User className="w-6 h-6 text-muted/60" />
+            )}
+          </div>
               <div>
                 <p className="font-heading font-semibold text-sm tracking-[-0.02em]">Profile Photo</p>
                 <p className="text-xs text-muted/50 mt-0.5">Upload a headshot image</p>
@@ -1059,7 +1059,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                   value={headshotUrl}
                   onChange={(e) => setHeadshotUrl(e.target.value)}
                   placeholder="https://..."
-                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all font-mono text-xs"
+                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
                 />
                 <UploadButton bucket="project-covers" onUploaded={(url) => setHeadshotUrl(url)} />
               </div>
@@ -1073,15 +1073,15 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                   value={resumeUrl}
                   onChange={(e) => setResumeUrl(e.target.value)}
                   placeholder="https://..."
-                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all font-mono text-xs"
+                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
                 />
                 <UploadButton bucket="resumes" onUploaded={(url) => setResumeUrl(url)} />
               </div>
             </Field>
           </div>
 
-          <div className="p-5 sm:p-6 bg-surface rounded-xl border border-border space-y-5">
-            <div className="pb-4 border-b border-border">
+          <div className="p-5 sm:p-6 bg-surface rounded-xl border border-border/80 space-y-5">
+            <div className="pb-4 border-b border-border/80">
               <p className="font-heading font-semibold text-sm tracking-[-0.02em]">About</p>
               <p className="text-xs text-muted/50 mt-0.5">Your bio and skills</p>
             </div>
@@ -1092,7 +1092,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                 defaultValue={profile?.bio ?? ""}
                 rows={4}
                 placeholder="Write a short bio about yourself..."
-                className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all resize-none"
+                className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
               />
             </Field>
 
@@ -1105,7 +1105,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                     ? JSON.stringify(profile.skills)
                     : '["HTML","CSS","JavaScript","React.js","Node.js","Next.js","SQL","PHP"]'
                 }
-                className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all font-mono text-xs"
+                className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
               />
               <p className="text-[11px] text-muted/30 mt-1.5 font-mono">
                 JSON array of skills, e.g. &quot;React&quot; or &quot;Node.js&quot;
@@ -1115,7 +1115,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
 
           <button
             type="submit"
-            className="flex items-center gap-2 px-6 py-2.5 bg-accent text-white font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent/90 transition-all glow-sm"
+            className="flex items-center gap-2 px-6 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
           >
             <Check className="w-3.5 h-3.5" />
             Save Profile

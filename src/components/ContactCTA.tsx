@@ -7,7 +7,7 @@ import { fadeUpVariants } from "@/lib/motion";
 
 export default function ContactCTA() {
   return (
-    <section className="py-24 relative border-t border-[rgba(245,241,236,0.04)]">
+    <section className="py-24 relative border-t border-border/60">
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -16,7 +16,7 @@ export default function ContactCTA() {
             viewport={{ once: true }}
             variants={fadeUpVariants}
           >
-            <h2 className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em] mb-4">
+            <h2 className="font-heading font-bold text-3xl lg:text-5xl tracking-[-0.03em] mb-4">
               Let&apos;s build something together.
             </h2>
           </motion.div>
@@ -33,7 +33,7 @@ export default function ContactCTA() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white font-semibold text-sm rounded-md hover:bg-accent/90 transition-all glow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-accent-on font-semibold text-sm rounded-md hover:bg-accent-hover transition-all glow-sm"
             >
               Get in Touch
               <ArrowRight className="w-4 h-4" />

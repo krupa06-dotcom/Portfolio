@@ -16,7 +16,7 @@ export default function FeaturedProjects({
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
-          <h2 className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em]">
+          <h2 className="font-heading font-bold text-3xl lg:text-5xl tracking-[-0.03em]">
             Featured Projects
           </h2>
           <p className="text-muted text-sm mt-3 max-w-xl leading-[1.6]">
@@ -40,7 +40,7 @@ export default function FeaturedProjects({
         <div className="mt-10 text-center">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
+            className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors font-mono tracking-[0.08em] uppercase"
           >
             View All Projects
             <ArrowRight className="w-3.5 h-3.5" />

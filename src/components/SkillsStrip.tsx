@@ -12,9 +12,9 @@ export default function SkillsStrip() {
 
   return (
     <section className="relative py-12 overflow-hidden">
-      <div className="absolute inset-0 border-y border-[rgba(245,241,236,0.06)]" />
+      <div className="absolute inset-0 border-y border-border/60" />
       <div className="max-w-6xl mx-auto px-6 relative">
-        <p className="font-semibold text-xs tracking-[0.15em] uppercase text-accent mb-6">
+        <p className="font-semibold text-xs tracking-[0.15em] uppercase text-muted mb-6">
           Technologies
         </p>
         <div className="relative overflow-hidden">

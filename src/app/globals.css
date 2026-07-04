@@ -4,28 +4,17 @@
 
 @layer base {
   body {
-    @apply bg-background text-primary font-body antialiased;
-    background-image: radial-gradient(
-        ellipse 80% 50% at 50% -20%,
-        rgba(196, 70, 44, 0.08),
-        transparent
-      ),
-      radial-gradient(
-        ellipse 50% 40% at 80% 80%,
-        rgba(196, 70, 44, 0.05),
-        transparent
-      );
-    background-attachment: fixed;
+    @apply bg-background text-muted font-body antialiased;
   }
 
   ::selection {
-    background-color: rgba(196, 70, 44, 0.3);
-    color: #f5f1ec;
+    background-color: rgba(179, 56, 44, 0.2);
+    color: #FAF7F2;
   }
 
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(245, 241, 236, 0.08) transparent;
+    scrollbar-color: rgba(220, 214, 204, 0.4) transparent;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -42,7 +31,7 @@
 
 @layer components {
   .hairline {
-    @apply border border-[rgba(245,241,236,0.08)];
+    @apply border border-border;
   }
 
   .tag {
@@ -50,11 +39,11 @@
   }
 
   .glow {
-    box-shadow: 0 0 60px rgba(196, 70, 44, 0.15), 0 0 120px rgba(196, 70, 44, 0.05);
+    box-shadow: 0 0 60px rgba(179, 56, 44, 0.12), 0 0 120px rgba(179, 56, 44, 0.04);
   }
 
   .glow-sm {
-    box-shadow: 0 0 30px rgba(196, 70, 44, 0.1);
+    box-shadow: 0 0 30px rgba(179, 56, 44, 0.08);
   }
 }
 

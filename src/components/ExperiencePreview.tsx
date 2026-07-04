@@ -20,13 +20,13 @@ export default function ExperiencePreview({
   experiences: Experience[];
 }) {
   return (
-    <section className="py-24 bg-surface/50">
+    <section className="py-24 bg-surface">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
-          <p className="font-semibold text-xs tracking-[0.15em] uppercase text-accent mb-3">
+          <p className="font-semibold text-xs tracking-[0.15em] uppercase text-muted mb-3">
             Background
           </p>
-          <h2 className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em] mb-3">
+          <h2 className="font-heading font-bold text-3xl lg:text-5xl tracking-[-0.03em] mb-3">
             Experience
           </h2>
           <p className="text-muted text-sm max-w-lg leading-[1.6]">
@@ -49,7 +49,7 @@ export default function ExperiencePreview({
                   {formatDate(exp.start_date)}
                   {exp.end_date ? ` — ${formatDate(exp.end_date)}` : exp.start_date ? " — Present" : ""}
                 </p>
-                <h3 className="font-semibold text-lg tracking-[-0.02em]">
+                <h3 className="font-bold text-lg tracking-[-0.02em]">
                   {exp.role}
                 </h3>
                 <p className="text-muted font-mono text-xs tracking-[0.08em] uppercase mt-0.5">
@@ -65,7 +65,7 @@ export default function ExperiencePreview({
         <div className="mt-10 text-center">
           <Link
             href="/experience"
-            className="inline-flex items-center gap-1.5 text-sm text-muted/70 hover:text-accent transition-colors font-mono tracking-[0.08em] uppercase"
+            className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors font-mono tracking-[0.08em] uppercase"
           >
             View All Experience
             <ArrowRight className="w-3.5 h-3.5" />

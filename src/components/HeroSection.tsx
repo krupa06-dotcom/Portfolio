@@ -33,13 +33,13 @@ export default function HeroSection() {
           >
             <motion.p
               variants={item}
-              className="font-semibold text-xs tracking-[0.15em] uppercase text-accent mb-5"
+              className="font-semibold text-xs tracking-[0.15em] uppercase text-muted mb-5"
             >
               Full-Stack Developer &middot; UI/UX
             </motion.p>
             <motion.h1
               variants={item}
-              className="font-heading font-semibold text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] mb-3 text-primary"
+              className="font-heading font-bold text-5xl lg:text-8xl tracking-[-0.03em] leading-[0.95] mb-3 text-primary"
             >
               Krupa Parmar
             </motion.h1>
@@ -61,14 +61,14 @@ export default function HeroSection() {
             <motion.div variants={item} className="flex items-center gap-4">
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white font-semibold text-sm rounded-md hover:bg-accent/90 transition-all glow-sm"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-on font-semibold text-sm rounded-md hover:bg-accent-hover transition-all glow-sm"
               >
                 View Projects
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1 text-sm text-muted/60 font-semibold hover:text-primary transition-colors"
+                className="inline-flex items-center gap-1 text-sm text-muted font-semibold hover:text-primary transition-colors"
               >
                 Get in Touch
                 <ArrowRight className="w-3 h-3" />
@@ -92,13 +92,13 @@ export default function HeroSection() {
                   sizes="(max-width: 640px) 256px, 288px"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-accent/25 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-surface/60 to-transparent pointer-events-none" />
               </div>
             </div>
           </motion.div>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none bg-gradient-to-b from-transparent to-[#120C0C]" />
+      <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none bg-gradient-to-b from-transparent to-[#FAF7F2]" />
     </section>
   );
 }

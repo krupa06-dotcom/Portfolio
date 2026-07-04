@@ -9,12 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#120C0C",
-        surface: "#1A1414",
-        border: "rgba(245, 241, 236, 0.08)",
-        primary: "#F5F1EC",
-        muted: "#A69C97",
-        accent: "#C4462C",
+        background: "#FAF7F2",
+        surface: "#E8E0D4",
+        border: "#DCD6CC",
+        primary: "#1B1815",
+        muted: "#7A756D",
+        accent: "#B3382C",
+        "accent-hover": "#C4483B",
+        "accent-on": "#FBEFEC",
       },
       fontFamily: {
         heading: ["Fraunces", "serif"],

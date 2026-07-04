@@ -59,21 +59,21 @@ export default function CinematicBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div className="absolute inset-0 bg-[#120C0C]" />
+      <div className="absolute inset-0 bg-[#FAF7F2]" />
 
       {!quiet && (
         <>
           <div
             className={`absolute -top-1/4 -left-1/4 w-[60vw] h-[60vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-1" : ""}`}
             style={{
-              background: "radial-gradient(circle, rgba(196,70,44,0.3) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(220,214,204,0.25) 0%, transparent 70%)",
               filter: "blur(120px)",
             }}
           />
           <div
             className={`absolute -bottom-1/4 -right-1/4 w-[50vw] h-[50vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-2" : ""}`}
             style={{
-              background: "radial-gradient(circle, rgba(36,28,61,0.35) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(220,214,204,0.18) 0%, transparent 70%)",
               filter: "blur(120px)",
             }}
           />
@@ -83,7 +83,7 @@ export default function CinematicBackground() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at center, transparent 40%, #120C0C 100%)",
+          background: "radial-gradient(ellipse at center, transparent 40%, #FAF7F2 100%)",
         }}
       />
 
@@ -104,7 +104,7 @@ export default function CinematicBackground() {
           ref={cursorRef}
           className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
           style={{
-            background: "radial-gradient(circle, rgba(196,70,44,0.08) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(220,214,204,0.15) 0%, transparent 70%)",
             willChange: "transform",
           }}
         />

@@ -34,18 +34,18 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
-      <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.03] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-transparent pointer-events-none" />
 
       <div className="relative w-full max-w-sm">
         {/* Decorative top accent */}
-        <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+        <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-        <div className="bg-surface/80 backdrop-blur-xl rounded-xl border border-border p-8">
+        <div className="bg-surface backdrop-blur-xl rounded-xl border border-border p-8">
           {/* Logo / Icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center glow-sm">
+            <div className="w-12 h-12 rounded-xl bg-surface border border-border/80 flex items-center justify-center">
               <svg
-                className="w-6 h-6 text-accent"
+                className="w-6 h-6 text-muted/60"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -82,7 +82,7 @@ export default function AdminLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+                className="w-full bg-background border border-border/80 rounded-lg px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
                 placeholder="you@example.com"
                 required
               />
@@ -100,7 +100,7 @@ export default function AdminLogin() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm text-primary placeholder:text-muted/30 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/20 transition-all"
+                className="w-full bg-background border border-border/80 rounded-lg px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
                 placeholder="Enter your password"
                 required
               />
@@ -128,7 +128,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={pending}
-              className="w-full flex items-center justify-center gap-2 px-6 py-2.5 bg-accent text-white font-heading font-semibold text-sm rounded-lg hover:bg-accent/90 transition-all disabled:opacity-60 glow-sm"
+              className="w-full flex items-center justify-center gap-2 px-6 py-2.5 bg-accent text-accent-on font-heading font-semibold text-sm rounded-lg hover:bg-accent-hover transition-all disabled:opacity-60 glow-sm"
             >
               {pending ? (
                 <>
