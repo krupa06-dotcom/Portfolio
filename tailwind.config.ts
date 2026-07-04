@@ -10,19 +10,24 @@ const config: Config = {
     extend: {
       colors: {
         background: "#FAF7F2",
-        surface: "#E8E0D4",
-        border: "#DCD6CC",
-        primary: "#1B1815",
-        muted: "#7A756D",
+        surface: "#F0EAE0",          // slightly warmer surface for cards/sections
+        "surface-deep": "#E8DED0",   // CTA section deep bg — one shade richer
+        border: "#E4DDD1",
+        // text hierarchy
+        heading: "#16130F",          // near-black — max contrast for H1/H2
+        primary: "#16130F",          // alias, kept for legacy usage
+        body: "#55504A",             // body copy — 4.5:1+ on #FAF7F2
+        muted: "#8A857D",            // captions, dates, footer only
+        // accent
         accent: "#B3382C",
-        "accent-hover": "#C4483B",
-        "accent-on": "#FBEFEC",
+        "accent-hover": "#8F2C22",   // darker on hover (light bg needs darker, not lighter)
+        "accent-on": "#FFFDF9",      // text on accent-filled buttons
       },
       fontFamily: {
-        heading: ["Fraunces", "serif"],
-        display: ["Fraunces", "serif"],
-        body: ["Inter", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        heading: ["Georgia", "Times New Roman", "serif"],
+        display: ["Georgia", "Times New Roman", "serif"],
+        body: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
+        mono: ["Menlo", "Monaco", "Consolas", "monospace"],
       },
       borderRadius: {
         md: "4px",

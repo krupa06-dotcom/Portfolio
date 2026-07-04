@@ -282,7 +282,19 @@ export async function uploadFile(formData: FormData) {
     .from(bucket)
     .upload(fileName, file, { upsert: true });
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    // More specific error messages for common issues
+    if (error.message.includes('Bucket not found')) {
+      throw new Error(`Storage bucket "${bucket}" doesn't exist. Check SUPABASE_SETUP.md for setup instructions.`);
+    }
+    if (error.message.includes('not allowed')) {
+      throw new Error(`File type not allowed. ${bucket === 'resumes' ? 'Only PDF files allowed.' : 'Only image files (JPG, PNG, WebP, GIF) allowed.'}`);
+    }
+    if (error.message.includes('Policy')) {
+      throw new Error(`Upload not permitted. Storage bucket "${bucket}" needs public upload policy configured.`);
+    }
+    throw new Error(`Upload failed: ${error.message}`);
+  }
 
   const { data: { publicUrl } } = supabase.storage
     .from(bucket)

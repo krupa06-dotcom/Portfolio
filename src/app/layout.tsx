@@ -1,30 +1,9 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import CinematicBackground from "@/components/CinematicBackground";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransitionWrapper from "@/components/PageTransitionWrapper";
 import "./globals.css";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-body",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Krupa Parmar — Full-Stack Developer & UI/UX Designer",
@@ -43,10 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en">
       <body className="min-h-screen flex flex-col">
         <CinematicBackground />
         <Nav />
