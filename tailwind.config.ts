@@ -36,6 +36,8 @@ const config: Config = {
         "aurora-1": "aurora-1 22s ease-in-out infinite alternate",
         "aurora-2": "aurora-2 18s ease-in-out infinite alternate",
         "marquee": "marquee 40s linear infinite",
+        "typing": "typing 2s steps(12) 0.5s forwards",
+        "blink": "blink 0.7s step-end 0.5s infinite",
       },
       keyframes: {
         "aurora-1": {
@@ -51,6 +53,13 @@ const config: Config = {
         "marquee": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        "typing": {
+          "from": { width: "0" },
+          "to": { width: "100%" },
+        },
+        "blink": {
+          "50%": { borderColor: "transparent" },
         },
       },
     },

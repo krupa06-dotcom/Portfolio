@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -17,13 +18,23 @@ export default function Nav() {
 
   const isHome = pathname === "/";
 
-  const bgOpacity   = useTransform(scrollY, [0, 40], [isHome ? 1 : 0, 0.88]);
+  const bgOpacity   = useTransform(scrollY, [0, 40], [isHome ? 0 : 0, 0.88]);
   const blurPx      = useTransform(scrollY, [0, 40], [isHome ? 0 : 0, 14]);
-  const borderAlpha = useTransform(scrollY, [0, 40], [isHome ? 0.12 : 0, 0.12]);
+  const borderAlpha = useTransform(scrollY, [0, 40], [isHome ? 0 : 0, 0.12]);
 
   const bg  = useMotionTemplate`rgba(250, 247, 242, ${bgOpacity})`;
   const blur = useMotionTemplate`blur(${blurPx}px)`;
   const bdr = useMotionTemplate`rgba(228, 221, 209, ${borderAlpha})`;
+
+  const [isLightNav, setIsLightNav] = useState(isHome);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (isHome) {
+      setIsLightNav(latest < 40);
+    }
+  });
+
+  const linkColor = isLightNav ? "#F5F1EC" : undefined;
+  const activeLinkColor = isLightNav ? "#F5F1EC" : "#16130F";
 
   return (
     <motion.header
@@ -31,11 +42,11 @@ export default function Nav() {
       className="fixed top-0 left-0 right-0 z-50 border-b"
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo — heading color, max contrast */}
+        {/* Logo */}
         <Link
           href="/"
-          className="font-heading font-bold text-xl tracking-[-0.02em] text-heading no-underline"
-          style={{ color: "#16130F" }}
+          className="font-heading font-bold text-xl tracking-[-0.02em] no-underline transition-colors duration-200"
+          style={{ color: isLightNav ? "#F5F1EC" : "#16130F" }}
         >
           KP.
         </Link>
@@ -49,16 +60,15 @@ export default function Nav() {
                 href={link.href}
                 className={[
                   "font-body text-[15px] relative pb-1 no-underline transition-colors duration-200",
-                  // Active: heading color (near-black), always-visible accent underline
                   active
-                    ? "text-heading font-semibold"
-                    : "text-muted hover:text-heading font-normal",
+                    ? "font-semibold"
+                    : "hover:text-heading font-normal",
+                  isLightNav ? "" : (active ? "text-heading" : "text-muted"),
                 ].join(" ")}
-                style={{ color: active ? "#16130F" : undefined }}
+                style={{ color: active ? activeLinkColor : linkColor }}
               >
                 {link.label}
 
-                {/* Active indicator — permanent, accent colored, visible on light bg */}
                 {active && (
                   <motion.span
                     layoutId="nav-indicator"
@@ -70,7 +80,7 @@ export default function Nav() {
             );
           })}
 
-          {/* Resume button — primary button with warm shadow */}
+          {/* Resume button */}
           <a
             href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/resume/resume.pdf`}
             target="_blank"
