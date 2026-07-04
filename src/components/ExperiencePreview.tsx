@@ -109,9 +109,9 @@ export default function ExperiencePreview({
           <Link
             href="/experience"
             className="inline-flex items-center gap-1.5 text-sm font-semibold no-underline transition-colors duration-200 font-mono tracking-[0.08em] uppercase"
-            style={{ color: "#8A857D" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#FAF7F2"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#8A857D"; }}
+            style={{ color: "#B3382C" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#8F2C22"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#B3382C"; }}
           >
             View All Experience
             <ArrowRight className="w-3.5 h-3.5" />

@@ -134,7 +134,7 @@ function Eyebrow() {
   return (
     <p
       className="text-[11px] uppercase tracking-[0.15em] mb-6"
-      style={{ color: "#E0A99E" }}
+      style={{ color: "#B3382C" }}
     >
       Full-Stack Developer &amp; UI/UX Designer
     </p>
