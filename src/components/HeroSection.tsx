@@ -16,7 +16,10 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden"
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      style={{
+        background: "linear-gradient(160deg, #080808 0%, #110A0A 30%, #1A0C0C 55%, #080808 100%)",
+      }}
     >
       {/* ── Floating blur shapes ─────────────────────── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
@@ -51,13 +54,12 @@ export default function HeroSection() {
             top: "60%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            filter: "blur(80px)",
           }}
         />
       </div>
 
       {/* ── Background image with parallax ─────────── */}
-      <motion.div className="absolute inset-0 z-0 flex items-center justify-center" style={{ y: bgY }}>
+      <motion.div className="absolute inset-0 z-0 flex items-center justify-center pt-16" style={{ y: bgY }}>
         <div className="relative w-full h-full scale-[1.15]">
           <Image
             src="/krupa-avatar.png"
@@ -69,17 +71,6 @@ export default function HeroSection() {
           />
         </div>
       </motion.div>
-
-      {/* Dark gradient overlay — same directional feel as reference */}
-      <div
-        className="absolute inset-0 z-[2]"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(22,19,15,0.55) 0%, rgba(22,19,15,0.35) 40%, rgba(22,19,15,0.10) 70%, rgba(22,19,15,0.00) 100%)",
-        }}
-      />
-
-
     </section>
   );
 }

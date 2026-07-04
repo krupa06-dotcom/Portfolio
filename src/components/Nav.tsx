@@ -15,9 +15,11 @@ export default function Nav() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
-  const bgOpacity   = useTransform(scrollY, [0, 40], [0, 0.88]);
-  const blurPx      = useTransform(scrollY, [0, 40], [0, 14]);
-  const borderAlpha = useTransform(scrollY, [0, 40], [0, 0.12]);
+  const isHome = pathname === "/";
+
+  const bgOpacity   = useTransform(scrollY, [0, 40], [isHome ? 1 : 0, 0.88]);
+  const blurPx      = useTransform(scrollY, [0, 40], [isHome ? 0 : 0, 14]);
+  const borderAlpha = useTransform(scrollY, [0, 40], [isHome ? 0.12 : 0, 0.12]);
 
   const bg  = useMotionTemplate`rgba(250, 247, 242, ${bgOpacity})`;
   const blur = useMotionTemplate`blur(${blurPx}px)`;
