@@ -12,15 +12,15 @@ export default function ExperiencePreview({
   experiences: Experience[];
 }) {
   return (
-    <section className="py-24" style={{ backgroundColor: "#0E0C0A" }}>
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-16 sm:py-20 lg:py-24" style={{ backgroundColor: "#0E0C0A" }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-12">
           {/* Eyebrow — white-tinted on black */}
           <p className="eyebrow mb-3">Background</p>
 
           {/* H2 — white on black */}
           <h2
-            className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em] mb-3"
+            className="font-heading font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em] mb-3"
             style={{ color: "#FAF7F2" }}
           >
             Experience

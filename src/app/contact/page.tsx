@@ -25,11 +25,11 @@ const links = [
 
 export default function ContactPage() {
   return (
-    <div className="pt-32 pb-24">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-5 gap-16">
+    <div className="pt-24 sm:pt-32 pb-16 sm:pb-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-16">
           <div className="lg:col-span-3 lg:pr-12">
-            <h1 className="font-heading font-bold text-5xl lg:text-7xl tracking-[-0.03em] leading-[0.95] mb-6 text-primary">
+            <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-7xl tracking-[-0.03em] leading-[0.95] mb-6 text-primary break-words">
               Say hello.
             </h1>
             <p className="text-muted text-base leading-[1.6] mb-10 max-w-md">

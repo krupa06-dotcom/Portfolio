@@ -19,7 +19,7 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
 
   return (
     <section className="w-full py-24 max-md:py-16" style={{ backgroundColor: "#B3382C" }}>
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <p 
@@ -29,7 +29,7 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
             WHAT I WORK WITH
           </p>
           <h2 
-            className="font-heading text-4xl lg:text-5xl tracking-[-0.02em]"
+            className="font-heading text-3xl sm:text-4xl lg:text-5xl tracking-[-0.02em]"
             style={{ color: "#FAF7F2" }}
           >
             Skills & Technologies
@@ -37,7 +37,7 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
         </div>
 
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           variants={!prefersReducedMotion ? cardStagger : undefined}
           initial={!prefersReducedMotion ? "hidden" : undefined}
           whileInView={!prefersReducedMotion ? "visible" : undefined}

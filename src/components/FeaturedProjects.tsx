@@ -12,22 +12,22 @@ export default function FeaturedProjects({
   projects: Project[];
 }) {
   return (
-    <section className="py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-16 sm:py-20 lg:py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-12">
           {/* Eyebrow — deliberate label, not another gray line */}
           <p className="eyebrow mb-3">Selected Work</p>
 
           {/* H2 — heading color, 600 weight, noticeably larger than body */}
           <h2
-            className="font-heading font-semibold text-3xl lg:text-5xl tracking-[-0.03em] mb-3"
+            className="font-heading font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em] mb-3"
             style={{ color: "#16130F" }}
           >
             Featured Projects
           </h2>
 
           {/* Subtext — body color, clearly lighter than h2 */}
-          <p className="text-base leading-[1.6] max-w-xl" style={{ color: "#55504A" }}>
+          <p className="text-sm sm:text-base leading-[1.6] max-w-xl" style={{ color: "#55504A" }}>
             Live products I&apos;ve built end-to-end — from UI design to
             backend logic and deployment.
           </p>
@@ -38,7 +38,7 @@ export default function FeaturedProjects({
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={cardStagger}
-          className="grid sm:grid-cols-2 gap-6"
+          className="grid sm:grid-cols-2 gap-4 sm:gap-6"
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={cardVariants}>

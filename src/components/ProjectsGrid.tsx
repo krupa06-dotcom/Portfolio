@@ -26,7 +26,7 @@ export default function ProjectsGrid({
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
       variants={cardStagger}
-      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
     >
       {projects.map((project) => (
         <motion.div key={project.id} variants={cardVariants}>

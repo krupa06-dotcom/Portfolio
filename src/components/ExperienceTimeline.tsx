@@ -16,7 +16,7 @@ export default function ExperienceTimeline({
     <div className="space-y-16">
       {experience.length > 0 && (
         <div>
-          <h2 className="font-heading font-bold text-3xl lg:text-5xl tracking-[-0.03em] mb-10">
+          <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em] mb-10">
             Internships
           </h2>
           <motion.div
@@ -30,7 +30,7 @@ export default function ExperienceTimeline({
               <motion.div
                 key={exp.id}
                 variants={expVariants}
-                className={`flex gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                className={`flex gap-4 sm:gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
                 <div className="flex flex-col items-center shrink-0">
                   <div className="w-3 h-3 rounded-full bg-accent mt-1.5 glow-sm" />
@@ -74,7 +74,7 @@ export default function ExperienceTimeline({
 
       {hackathons.length > 0 && (
         <div>
-          <h2 className="font-heading font-bold text-3xl lg:text-5xl tracking-[-0.03em] mb-10">
+          <h2 className="font-heading font-bold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em] mb-10">
             Hackathons
           </h2>
           <motion.div
@@ -88,7 +88,7 @@ export default function ExperienceTimeline({
               <motion.div
                 key={h.id}
                 variants={expVariants}
-                className={`flex gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
+                className={`flex gap-4 sm:gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
                 <div className="flex flex-col items-center shrink-0">
                   <div className="w-3 h-3 rounded-full bg-accent mt-1.5 glow-sm" />

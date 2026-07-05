@@ -81,7 +81,7 @@ export default function HeroSection() {
 
       {/* ── Desktop text block ──────────────────────── */}
       <motion.div
-        className="absolute top-[25%] left-16 z-[2] max-w-[480px] max-md:hidden"
+        className="absolute top-[25%] left-8 lg:left-16 z-[2] max-w-[420px] lg:max-w-[480px] max-md:hidden"
         style={{ transform: "translateY(-50%)", y: parallaxY }}
         {...textAnimation}
       >
@@ -94,7 +94,7 @@ export default function HeroSection() {
 
       {/* ── Mobile text block ───────────────────────── */}
       <div
-        className="hidden max-md:block px-6 py-8"
+        className="hidden max-md:block px-6 py-8 max-sm:px-4 max-sm:py-6"
         style={{ padding: "32px 24px" }}
       >
         <Eyebrow />
@@ -104,26 +104,6 @@ export default function HeroSection() {
         <Actions />
       </div>
 
-      {/* ── Status badge ────────────────────────────── */}
-      <div
-        className="absolute z-[2] flex items-center gap-2 max-md:top-4 max-md:left-4 md:bottom-6 md:right-10"
-        style={{
-          background: "rgba(20,17,16,0.6)",
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
-          border: "0.5px solid rgba(245,241,236,0.15)",
-          borderRadius: "8px",
-          padding: "10px 16px",
-        }}
-      >
-        <span
-          className="w-[7px] h-[7px] rounded-full shrink-0"
-          style={{ backgroundColor: "#5FAE6C" }}
-        />
-        <span className="text-[12px] font-medium" style={{ color: "#F5F1EC" }}>
-          Available for work
-        </span>
-      </div>
     </section>
   );
 }
@@ -144,7 +124,7 @@ function Eyebrow() {
 function Name({ desktop }: { desktop?: boolean }) {
   return (
     <h1
-      className={`font-bold leading-[0.98] mb-6 font-heading ${desktop ? "text-[72px]" : "text-[40px]"}`}
+      className={`font-bold leading-[0.98] mb-6 font-heading ${desktop ? "text-[72px]" : "text-[36px] sm:text-[40px]"}`}
       style={{ color: "#F5F1EC" }}
     >
       Krupa Parmar

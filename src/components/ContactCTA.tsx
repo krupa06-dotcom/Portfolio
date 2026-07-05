@@ -11,10 +11,10 @@ export default function ContactCTA() {
      * Clean white section design with black text and white button text
      */
     <section
-      className="py-24 relative border-t border-border/60 overflow-hidden"
+      className="py-16 sm:py-20 lg:py-24 relative border-t border-border/60 overflow-hidden"
       style={{ backgroundColor: "#FFFFFF" }}
     >
-      <div className="max-w-6xl mx-auto px-6 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 
           <motion.div
@@ -28,7 +28,7 @@ export default function ContactCTA() {
 
             {/* H2 — dark heading on white background */}
             <h2
-              className="font-heading font-bold text-3xl lg:text-5xl tracking-[-0.03em]"
+              className="font-heading font-bold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em]"
               style={{ color: "#16130F" }}
             >
               Let&apos;s build something together.
@@ -44,7 +44,7 @@ export default function ContactCTA() {
           >
             {/* Body text — readable on white */}
             <p
-              className="text-base leading-[1.6] mb-6 max-w-md lg:ml-auto"
+              className="text-sm sm:text-base leading-[1.6] mb-6 max-w-md lg:ml-auto"
               style={{ color: "#55504A" }}
             >
               Open to new opportunities, collaborations, and freelance work.

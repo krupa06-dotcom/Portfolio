@@ -43,7 +43,7 @@ export default function Footer() {
         borderColor: "rgba(255,255,255,0.1)",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
         {/* Left side — Logo and tech stack */}
         <div className="flex items-center gap-2 text-sm">
           <span

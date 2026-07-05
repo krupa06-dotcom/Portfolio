@@ -14,7 +14,7 @@
   }
 
   body {
-    @apply bg-background text-body font-body antialiased;
+    @apply bg-background text-body font-body antialiased overflow-x-hidden;
   }
 
   /* ── Headings ─────────────────────────────────────────── */
@@ -168,5 +168,13 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6;
   }
 }

@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -15,6 +16,7 @@ const links = [
 export default function Nav() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isHome = pathname === "/";
 
@@ -36,22 +38,28 @@ export default function Nav() {
   const linkColor = isLightNav ? "#F5F1EC" : undefined;
   const activeLinkColor = isLightNav ? "#F5F1EC" : "#16130F";
 
+  function closeMobileMenu() {
+    setMobileMenuOpen(false);
+  }
+
   return (
     <motion.header
       style={{ backgroundColor: bg, backdropFilter: blur, borderColor: bdr }}
       className="fixed top-0 left-0 right-0 z-50 border-b"
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
           className="font-heading font-bold text-xl tracking-[-0.02em] no-underline transition-colors duration-200"
           style={{ color: isLightNav ? "#F5F1EC" : "#16130F" }}
+          onClick={closeMobileMenu}
         >
           KP.
         </Link>
 
-        <div className="flex items-center gap-8">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
           {links.map((link) => {
             const active = pathname === link.href;
             return (
@@ -90,7 +98,65 @@ export default function Nav() {
             Resume
           </a>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMobileMenuOpen((prev) => !prev)}
+          className="md:hidden p-2 -mr-2 transition-colors duration-200"
+          style={{ color: isLightNav ? "#F5F1EC" : "#16130F" }}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </nav>
+
+      {/* Mobile menu overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden overflow-hidden border-t"
+            style={{
+              backgroundColor: "#FAF7F2",
+              borderColor: "rgba(228, 221, 209, 0.8)",
+            }}
+          >
+            <div className="px-6 py-6 space-y-2">
+              {links.map((link) => {
+                const active = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMobileMenu}
+                    className={`block py-3 px-4 rounded-lg text-sm font-body transition-colors duration-200 no-underline ${
+                      active
+                        ? "font-semibold text-heading bg-surface"
+                        : "font-normal text-muted hover:text-heading hover:bg-surface/50"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+              <div className="pt-4">
+                <a
+                  href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/resume/resume.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobileMenu}
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-accent text-accent-on font-semibold text-xs uppercase tracking-[0.08em] rounded-md transition-all duration-200 no-underline glow-sm hover:bg-accent-hover w-full justify-center"
+                >
+                  Resume
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

@@ -8,8 +8,8 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <div className="pt-32 pb-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="pt-24 sm:pt-32 pb-16 sm:pb-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <PageHeader
           eyebrow="Portfolio"
           title="Projects"
