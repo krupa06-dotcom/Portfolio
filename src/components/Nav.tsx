@@ -85,18 +85,7 @@ export default function Nav() {
             href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/resume/resume.pdf`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-accent-on font-semibold text-xs uppercase tracking-[0.08em] rounded-md transition-all duration-200 no-underline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
-            style={{
-              boxShadow: "0 2px 8px rgba(179, 56, 44, 0.25)",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#8F2C22";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 14px rgba(179, 56, 44, 0.30)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 2px 8px rgba(179, 56, 44, 0.25)";
-            }}
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-accent-on font-semibold text-xs uppercase tracking-[0.08em] rounded-md transition-all duration-200 no-underline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 glow-sm hover:bg-accent-hover hover:shadow-[0_4px_14px_rgba(179,56,44,0.30)]"
           >
             Resume
           </a>

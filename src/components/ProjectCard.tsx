@@ -1,10 +1,16 @@
+"use client";
+
 import type { Project } from "@/lib/types";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { defaultEasing } from "@/lib/motion";
+import { useState } from "react";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
+
   return (
     <motion.a
       href={project.url}
@@ -40,17 +46,29 @@ export default function ProjectCard({ project }: { project: Project }) {
 
         {/* Cover image */}
         <div className="relative aspect-video overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
-          {project.cover_image_url ? (
-            <Image
-              src={project.cover_image_url}
-              alt={project.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+          {project.cover_image_url && !imageError ? (
+            <>
+              <Image
+                src={project.cover_image_url}
+                alt={project.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                onLoad={() => setImageLoading(false)}
+                onError={() => {
+                  setImageError(true);
+                  setImageLoading(false);
+                }}
+              />
+              {imageLoading && (
+                <div className="w-full h-full flex items-center justify-center font-mono text-xs tracking-[0.08em] uppercase" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  Loading...
+                </div>
+              )}
+            </>
           ) : (
             <div className="w-full h-full flex items-center justify-center font-mono text-xs tracking-[0.08em] uppercase" style={{ color: "rgba(255,255,255,0.3)" }}>
-              No Image
+              {imageError ? "Image Error" : "No Image"}
             </div>
           )}
           {/* Warm fade-in overlay on hover */}

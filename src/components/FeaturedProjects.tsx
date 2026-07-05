@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
+import ViewAllLink from "./ViewAllLink";
 import { cardStagger, cardVariants } from "@/lib/motion";
 import type { Project } from "@/lib/types";
 
@@ -48,18 +47,7 @@ export default function FeaturedProjects({
           ))}
         </motion.div>
 
-        <div className="mt-10 text-center">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold no-underline transition-colors duration-200 font-mono tracking-[0.08em] uppercase"
-            style={{ color: "#B3382C" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#8F2C22"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#B3382C"; }}
-          >
-            View All Projects
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+        <ViewAllLink href="/projects" label="View All Projects" />
       </div>
     </section>
   );

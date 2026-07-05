@@ -24,12 +24,7 @@ export default function ContactCTA() {
             variants={fadeUpVariants}
           >
             {/* Eyebrow — dark on white */}
-            <p
-              className="font-semibold text-xs tracking-[0.12em] uppercase mb-3"
-              style={{ color: "#8A857D" }}
-            >
-              Get in touch
-            </p>
+            <p className="eyebrow mb-3">Get in touch</p>
 
             {/* H2 — dark heading on white background */}
             <h2
@@ -59,21 +54,7 @@ export default function ContactCTA() {
             {/* Button — accent background with WHITE text */}
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent font-semibold text-sm rounded-md transition-all duration-200 no-underline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
-              style={{ 
-                color: "#FFFFFF", 
-                boxShadow: "0 2px 8px rgba(179, 56, 44, 0.25)" 
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.backgroundColor = "#8F2C22";
-                el.style.boxShadow = "0 4px 14px rgba(179, 56, 44, 0.30)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLAnchorElement;
-                el.style.backgroundColor = "";
-                el.style.boxShadow = "0 2px 8px rgba(179, 56, 44, 0.25)";
-              }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-on font-semibold text-sm rounded-md transition-all duration-200 no-underline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 glow-sm hover:bg-accent-hover hover:shadow-[0_4px_14px_rgba(179,56,44,0.30)]"
             >
               Get in Touch
               <ArrowRight className="w-4 h-4" />

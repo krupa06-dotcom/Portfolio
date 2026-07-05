@@ -1,18 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import ViewAllLink from "./ViewAllLink";
 import { expStagger, expVariants } from "@/lib/motion";
+import { formatDate } from "@/lib/utils";
 import type { Experience } from "@/lib/types";
-
-function formatDate(date: string | null) {
-  if (!date) return "";
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-  });
-}
 
 export default function ExperiencePreview({
   experiences,
@@ -24,12 +16,7 @@ export default function ExperiencePreview({
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12">
           {/* Eyebrow — white-tinted on black */}
-          <p
-            className="font-semibold text-xs tracking-[0.12em] uppercase mb-3"
-            style={{ color: "#8A857D" }}
-          >
-            Background
-          </p>
+          <p className="eyebrow mb-3">Background</p>
 
           {/* H2 — white on black */}
           <h2
@@ -105,18 +92,7 @@ export default function ExperiencePreview({
           ))}
         </motion.div>
 
-        <div className="mt-10 text-center">
-          <Link
-            href="/experience"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold no-underline transition-colors duration-200 font-mono tracking-[0.08em] uppercase"
-            style={{ color: "#B3382C" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#8F2C22"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#B3382C"; }}
-          >
-            View All Experience
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+        <ViewAllLink href="/experience" label="View All Experience" />
       </div>
     </section>
   );

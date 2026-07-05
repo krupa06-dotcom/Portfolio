@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { cardStagger, cardVariants } from "@/lib/motion";
 import type { Skill } from "@/lib/types";
 

@@ -105,7 +105,7 @@ insert into projects (title, description, url, cover_image_url, tags, is_feature
     'Smiles NGO',
     'NGO website — donation/awareness platform built with Next.js and integrated payment gateway.',
     'https://smiles-ngo.vercel.app/',
-    'https://smiles-ngo.vercel.app/og-image.jpg',
+    'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=450&fit=crop',
     array['NEXT.JS', 'NODE', 'STRIPE'],
     true,
     1
@@ -114,7 +114,7 @@ insert into projects (title, description, url, cover_image_url, tags, is_feature
     'Sherdil Amritsar Kulche & Punjabi Dhaba',
     'Restaurant/catering business website with menu management, online ordering, and location info.',
     'https://sherdil-dhaba.vercel.app/',
-    'https://sherdil-dhaba.vercel.app/og-image.jpg',
+    'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=450&fit=crop',
     array['REACT', 'NODE', 'MONGODB'],
     true,
     2
@@ -123,7 +123,7 @@ insert into projects (title, description, url, cover_image_url, tags, is_feature
     'Prakarsh',
     'College fest / university initiative website — event scheduling, registration, and live updates.',
     'https://www.prakarsh.org/',
-    'https://www.prakarsh.org/og-image.jpg',
+    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=450&fit=crop',
     array['NEXT.JS', 'SUPABASE', 'TAILWIND'],
     true,
     3

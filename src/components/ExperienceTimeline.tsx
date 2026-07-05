@@ -3,14 +3,7 @@
 import type { Experience, Hackathon } from "@/lib/types";
 import { motion } from "framer-motion";
 import { expStagger, expVariants, lineVariants } from "@/lib/motion";
-
-function formatDate(date: string | null) {
-  if (!date) return "";
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-  });
-}
+import { formatDate } from "@/lib/utils";
 
 export default function ExperienceTimeline({
   experience,

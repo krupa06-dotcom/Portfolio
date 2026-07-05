@@ -21,6 +21,7 @@ import {
   LogOut,
 } from "lucide-react";
 import type { Project, Experience, Hackathon, Message, Profile, Skill } from "@/lib/types";
+import { formatDate } from "@/lib/utils";
 import {
   upsertProject,
   deleteProject,
@@ -290,7 +291,7 @@ export default function AdminDashboard({
                     <ListItem
                       key={exp.id}
                       title={exp.role}
-                      subtitle={`${exp.company}${exp.start_date ? ` · ${new Date(exp.start_date).toLocaleDateString("en-US", { year: "numeric", month: "short" })}${exp.end_date ? ` — ${new Date(exp.end_date).toLocaleDateString("en-US", { year: "numeric", month: "short" })}` : " — Present"}` : ""}`}
+                      subtitle={`${exp.company}${exp.start_date ? ` · ${formatDate(exp.start_date)}${exp.end_date ? ` — ${formatDate(exp.end_date)}` : " — Present"}` : ""}`}
                       badge={{ label: "Internship", color: "muted" }}
                       actions={
                         <>
@@ -346,7 +347,7 @@ export default function AdminDashboard({
                     <ListItem
                       key={h.id}
                       title={h.name}
-                      subtitle={h.date ? new Date(h.date).toLocaleDateString("en-US", { year: "numeric", month: "short" }) : undefined}
+                      subtitle={h.date ? formatDate(h.date) : undefined}
                       badge={h.result ? { label: h.result, color: "primary" } : undefined}
                       actions={
                         <>
@@ -690,6 +691,34 @@ function IconButton({
   );
 }
 
+/* ────────── Form Actions ────────── */
+
+function FormActions({
+  submitLabel,
+  onCancel,
+}: {
+  submitLabel: string;
+  onCancel: () => void;
+}) {
+  return (
+    <div className="flex items-center gap-3 pt-2">
+      <button
+        type="submit"
+        className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
+      >
+        {submitLabel}
+      </button>
+      <button
+        type="button"
+        onClick={onCancel}
+        className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
+      >
+        Cancel
+      </button>
+    </div>
+  );
+}
+
 /* ────────── Upload Button ────────── */
 
 function UploadButton({
@@ -898,21 +927,7 @@ function ProjectForm({
           className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
         />
       </Field>
-      <div className="flex items-center gap-3 pt-2">
-        <button
-          type="submit"
-          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
-        >
-          {project ? "Update Project" : "Create Project"}
-        </button>
-        <button
-          type="button"
-          onClick={onCancel}
-          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
-        >
-          Cancel
-        </button>
-      </div>
+      <FormActions submitLabel={project ? "Update Project" : "Create Project"} onCancel={onCancel} />
     </FormCard>
   );
 }
@@ -987,21 +1002,7 @@ function ExperienceForm({
           className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
         />
       </Field>
-      <div className="flex items-center gap-3 pt-2">
-        <button
-          type="submit"
-          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
-        >
-          {experience ? "Update Experience" : "Create Experience"}
-        </button>
-        <button
-          type="button"
-          onClick={onCancel}
-          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
-        >
-          Cancel
-        </button>
-      </div>
+      <FormActions submitLabel={experience ? "Update Experience" : "Create Experience"} onCancel={onCancel} />
     </FormCard>
   );
 }
@@ -1069,21 +1070,7 @@ function HackathonForm({
           />
         </Field>
       </div>
-      <div className="flex items-center gap-3 pt-2">
-        <button
-          type="submit"
-          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
-        >
-          {hackathon ? "Update Hackathon" : "Create Hackathon"}
-        </button>
-        <button
-          type="button"
-          onClick={onCancel}
-          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
-        >
-          Cancel
-        </button>
-      </div>
+      <FormActions submitLabel={hackathon ? "Update Hackathon" : "Create Hackathon"} onCancel={onCancel} />
     </FormCard>
   );
 }
@@ -1137,21 +1124,7 @@ function SkillForm({
           />
         </Field>
       </div>
-      <div className="flex items-center gap-3 pt-2">
-        <button
-          type="submit"
-          className="px-5 py-2.5 bg-accent text-accent-on font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:bg-accent-hover transition-all glow-sm"
-        >
-          {skill ? "Update Skill" : "Create Skill"}
-        </button>
-        <button
-          type="button"
-          onClick={onCancel}
-          className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
-        >
-          Cancel
-        </button>
-      </div>
+      <FormActions submitLabel={skill ? "Update Skill" : "Create Skill"} onCancel={onCancel} />
     </FormCard>
   );
 }
