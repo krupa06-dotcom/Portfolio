@@ -6,22 +6,15 @@ export const pageTransition = {
   exit: { opacity: 0, y: -24, transition: { ease: defaultEasing, duration: 0.3 } },
 };
 
-const stagger = {
+export const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.08 } },
 };
 
-export const cardStagger = stagger;
-export const expStagger = stagger;
-
-const fadeUp = {
+export const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { ease: defaultEasing, duration: 0.4 } },
 };
-
-export const fadeUpVariants = fadeUp;
-export const cardVariants = fadeUp;
-export const expVariants = fadeUp;
 
 export const lineVariants = {
   hidden: { scaleY: 0 },

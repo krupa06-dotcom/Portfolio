@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import ViewAllLink from "./ViewAllLink";
-import { expStagger, expVariants } from "@/lib/motion";
+import { stagger, fadeUp } from "@/lib/motion";
 import { formatDate } from "@/lib/utils";
 import type { Experience } from "@/lib/types";
 
@@ -12,7 +12,7 @@ export default function ExperiencePreview({
   experiences: Experience[];
 }) {
   return (
-    <section className="py-16 sm:py-20 lg:py-24" style={{ backgroundColor: "#0E0C0A" }}>
+    <section className="py-16 sm:py-20 lg:py-24" style={{ backgroundColor: "#0E0C0B" }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-12">
           {/* Eyebrow — white-tinted on black */}
@@ -37,11 +37,11 @@ export default function ExperiencePreview({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          variants={expStagger}
+          variants={stagger}
           className="max-w-2xl space-y-10"
         >
           {experiences.slice(0, 2).map((exp) => (
-            <motion.div key={exp.id} variants={expVariants} className="flex gap-4">
+            <motion.div key={exp.id} variants={fadeUp} className="flex gap-4">
               {/* Accent dot */}
               <div
                 className="w-2.5 h-2.5 rounded-full mt-2 shrink-0"

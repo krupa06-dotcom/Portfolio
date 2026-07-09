@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 export default function CinematicBackground() {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const grainRef = useRef<SVGFETurbulenceElement>(null);
   const [reducedMotion, setReducedMotion] = useState(true);
   const [isDesktop, setIsDesktop] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -27,7 +28,7 @@ export default function CinematicBackground() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  /* Lazy cursor-follow spotlight */
+  /* ── Cursor-follow spotlight ──────────────────────────── */
   useEffect(() => {
     if (!isDesktop || reducedMotion || !mounted) return;
 
@@ -57,6 +58,21 @@ export default function CinematicBackground() {
       cancelAnimationFrame(frame);
     };
   }, [isDesktop, reducedMotion, mounted]);
+
+  /* ── Animated grain seed ──────────────────────────────── */
+  useEffect(() => {
+    if (quiet || reducedMotion || !mounted) return;
+    const el = grainRef.current;
+    if (!el) return;
+
+    let seed = 0;
+    const interval = setInterval(() => {
+      seed = (seed + 1) % 100;
+      el.setAttribute("seed", String(seed));
+    }, 150);
+
+    return () => clearInterval(interval);
+  }, [quiet, reducedMotion, mounted]);
 
   return (
     <div
@@ -140,9 +156,8 @@ export default function CinematicBackground() {
       />
 
       {/*
-       * Film grain overlay — light-theme variant.
-       * mix-blend-mode: multiply reads correctly on light backgrounds
-       * (overlay washes out on light; multiply adds texture without brightening).
+       * Film grain overlay — animated seed for living texture.
+       * mix-blend-mode: multiply reads correctly on light backgrounds.
        * opacity ~3% — barely conscious, but removes the "flat SaaS page" feel.
        */}
       <svg
@@ -152,10 +167,12 @@ export default function CinematicBackground() {
       >
         <filter id="cinematic-grain">
           <feTurbulence
+            ref={grainRef}
             type="fractalNoise"
             baseFrequency="0.65"
             numOctaves="3"
             stitchTiles="stitch"
+            seed="0"
           />
           <feColorMatrix type="saturate" values="0" />
         </filter>

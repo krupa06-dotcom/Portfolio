@@ -39,7 +39,7 @@ export default function Footer() {
     <footer
       className="border-t"
       style={{
-        backgroundColor: "#0E0C0A",
+        backgroundColor: "#0E0C0B",
         borderColor: "rgba(255,255,255,0.1)",
       }}
     >

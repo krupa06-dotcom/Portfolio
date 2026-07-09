@@ -2,7 +2,7 @@
 
 import type { Experience, Hackathon } from "@/lib/types";
 import { motion } from "framer-motion";
-import { expStagger, expVariants, lineVariants } from "@/lib/motion";
+import { stagger, fadeUp, lineVariants } from "@/lib/motion";
 import { formatDate } from "@/lib/utils";
 
 export default function ExperienceTimeline({
@@ -23,13 +23,13 @@ export default function ExperienceTimeline({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            variants={expStagger}
+            variants={stagger}
             className="space-y-0"
           >
             {experience.map((exp, i) => (
               <motion.div
                 key={exp.id}
-                variants={expVariants}
+                variants={fadeUp}
                 className={`flex gap-4 sm:gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
                 <div className="flex flex-col items-center shrink-0">
@@ -81,13 +81,13 @@ export default function ExperienceTimeline({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
-            variants={expStagger}
+            variants={stagger}
             className="space-y-0"
           >
             {hackathons.map((h, i) => (
               <motion.div
                 key={h.id}
-                variants={expVariants}
+                variants={fadeUp}
                 className={`flex gap-4 sm:gap-6 pb-10 relative last:pb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
                 <div className="flex flex-col items-center shrink-0">

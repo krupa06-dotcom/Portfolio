@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { fadeUpVariants } from "@/lib/motion";
+import { fadeUp } from "@/lib/motion";
 
 export default function ContactCTA() {
   return (
@@ -21,7 +21,7 @@ export default function ContactCTA() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeUpVariants}
+            variants={fadeUp}
           >
             {/* Eyebrow — dark on white */}
             <p className="eyebrow mb-3">Get in touch</p>
@@ -39,7 +39,7 @@ export default function ContactCTA() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeUpVariants}
+            variants={fadeUp}
             className="lg:text-right"
           >
             {/* Body text — readable on white */}

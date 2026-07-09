@@ -23,7 +23,6 @@ const config: Config = {
       },
       fontFamily: {
         heading: ["Georgia", "Times New Roman", "serif"],
-        display: ["Georgia", "Times New Roman", "serif"],
         body: ["system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         mono: ["Menlo", "Monaco", "Consolas", "monospace"],
       },

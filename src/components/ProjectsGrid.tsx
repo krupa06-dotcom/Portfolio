@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
-import { cardStagger, cardVariants } from "@/lib/motion";
+import { stagger, fadeUp } from "@/lib/motion";
 import type { Project } from "@/lib/types";
 
 export default function ProjectsGrid({
@@ -25,11 +25,11 @@ export default function ProjectsGrid({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      variants={cardStagger}
+      variants={stagger}
       className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
     >
       {projects.map((project) => (
-        <motion.div key={project.id} variants={cardVariants}>
+        <motion.div key={project.id} variants={fadeUp}>
           <ProjectCard project={project} />
         </motion.div>
       ))}

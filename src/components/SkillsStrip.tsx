@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { cardStagger, cardVariants } from "@/lib/motion";
+import { stagger, fadeUp } from "@/lib/motion";
 import type { Skill } from "@/lib/types";
 
 export default function SkillsStrip({ skills }: { skills: Skill[] }) {
@@ -38,7 +38,7 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
 
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-          variants={!prefersReducedMotion ? cardStagger : undefined}
+          variants={!prefersReducedMotion ? stagger : undefined}
           initial={!prefersReducedMotion ? "hidden" : undefined}
           whileInView={!prefersReducedMotion ? "visible" : undefined}
           viewport={{ once: true, margin: "-40px" }}
@@ -46,7 +46,7 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
           {groups.map((group) => (
             <motion.div
               key={group.label}
-              variants={!prefersReducedMotion ? cardVariants : undefined}
+              variants={!prefersReducedMotion ? fadeUp : undefined}
               className="border rounded-lg overflow-hidden transition-all duration-300"
               style={{
                 backgroundColor: "#FFF8EE",

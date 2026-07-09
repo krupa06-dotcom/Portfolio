@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -29,6 +29,9 @@ export default function Nav() {
   const bdr = useMotionTemplate`rgba(228, 202, 172, ${borderAlpha})`;
 
   const [isLightNav, setIsLightNav] = useState(isHome);
+  useEffect(() => {
+    setIsLightNav(isHome);
+  }, [isHome]);
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (isHome) {
       setIsLightNav(latest < 40);
