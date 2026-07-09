@@ -52,7 +52,7 @@ export default function ContactForm() {
               id="name"
               name="name"
               required
-              className="w-full bg-surface backdrop-blur-sm border border-border/80 rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent/50 focus:bg-[#E3DACE] transition-all duration-200"
+              className="w-full bg-surface backdrop-blur-sm border border-border/80 rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent/50 focus:bg-[#F0DCC4] transition-all duration-200"
               placeholder="Your name"
             />
           </div>
@@ -68,7 +68,7 @@ export default function ContactForm() {
               id="email"
               name="email"
               required
-              className="w-full bg-surface backdrop-blur-sm border border-border/80 rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent/50 focus:bg-[#E3DACE] transition-all duration-200"
+              className="w-full bg-surface backdrop-blur-sm border border-border/80 rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent/50 focus:bg-[#F0DCC4] transition-all duration-200"
               placeholder="your@email.com"
             />
           </div>
@@ -84,7 +84,7 @@ export default function ContactForm() {
               name="message"
               rows={4}
               required
-              className="w-full bg-surface backdrop-blur-sm border border-border/80 rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent/50 focus:bg-[#E3DACE] transition-all duration-200 resize-none"
+              className="w-full bg-surface backdrop-blur-sm border border-border/80 rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-accent/50 focus:bg-[#F0DCC4] transition-all duration-200 resize-none"
               placeholder="Your message..."
             />
           </div>

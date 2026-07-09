@@ -21,13 +21,13 @@ export default function ExperiencePreview({
           {/* H2 — white on black */}
           <h2
             className="font-heading font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em] mb-3"
-            style={{ color: "#FAF7F2" }}
+                  style={{ color: "#FFF5E8" }}
           >
             Experience
           </h2>
 
           {/* Body subtext — softer white */}
-          <p className="text-sm leading-[1.6] max-w-lg" style={{ color: "#B5B0A8" }}>
+          <p className="text-sm leading-[1.6] max-w-lg" style={{ color: "#D4B89C" }}>
             Internships and hackathons that shaped my approach to building
             products.
           </p>
@@ -54,7 +54,7 @@ export default function ExperiencePreview({
                 {/* Date — muted on black */}
                 <p
                   className="font-mono text-xs tracking-[0.08em] uppercase mb-0.5"
-                  style={{ color: "#6B6660" }}
+                  style={{ color: "#BF8A6E" }}
                 >
                   {formatDate(exp.start_date)}
                   {exp.end_date
@@ -67,7 +67,7 @@ export default function ExperiencePreview({
                 {/* Role — bright white, max contrast */}
                 <h3
                   className="font-bold text-lg tracking-[-0.02em]"
-                  style={{ color: "#FAF7F2" }}
+            style={{ color: "#FFF8EE" }}
                 >
                   {exp.role}
                 </h3>
@@ -75,7 +75,7 @@ export default function ExperiencePreview({
                 {/* Company — softer white */}
                 <p
                   className="font-mono text-xs tracking-[0.08em] uppercase mt-0.5"
-                  style={{ color: "#B5B0A8" }}
+                  style={{ color: "#D4B89C" }}
                 >
                   {exp.company}
                 </p>
@@ -83,7 +83,7 @@ export default function ExperiencePreview({
                 {/* Description — muted white */}
                 <p
                   className="text-sm mt-1 leading-relaxed"
-                  style={{ color: "#8A857D" }}
+                  style={{ color: "#BF8A6E" }}
                 >
                   {exp.description}
                 </p>

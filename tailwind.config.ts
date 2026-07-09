@@ -9,19 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#FAF7F2",
-        surface: "#F0EAE0",          // slightly warmer surface for cards/sections
-        "surface-deep": "#E8DED0",   // CTA section deep bg — one shade richer
-        border: "#E4DDD1",
-        // text hierarchy
-        heading: "#16130F",          // near-black — max contrast for H1/H2
-        primary: "#16130F",          // alias, kept for legacy usage
-        body: "#55504A",             // body copy — 4.5:1+ on #FAF7F2
-        muted: "#8A857D",            // captions, dates, footer only
-        // accent
+        background: "#FFF8EE",
+        surface: "#F7E8D4",
+        "surface-deep": "#EDD4BC",
+        border: "#E4CAAC",
+        heading: "#1A0C06",
+        primary: "#1A0C06",
+        body: "#6B3A26",
+        muted: "#BF8A6E",
         accent: "#B3382C",
-        "accent-hover": "#8F2C22",   // darker on hover (light bg needs darker, not lighter)
-        "accent-on": "#FFFDF9",      // text on accent-filled buttons
+        "accent-hover": "#8F2C22",
+        "accent-on": "#FFFDF9",
       },
       fontFamily: {
         heading: ["Georgia", "Times New Roman", "serif"],

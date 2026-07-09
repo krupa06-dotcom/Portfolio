@@ -24,13 +24,13 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
         <div className="text-center mb-16">
           <p 
             className="text-sm tracking-[0.12em] uppercase mb-4"
-            style={{ color: "#B8860B" }}
+            style={{ color: "#F0C040" }}
           >
             WHAT I WORK WITH
           </p>
           <h2 
             className="font-heading text-3xl sm:text-4xl lg:text-5xl tracking-[-0.02em]"
-            style={{ color: "#FAF7F2" }}
+            style={{ color: "#FFF8EE" }}
           >
             Skills & Technologies
           </h2>
@@ -49,8 +49,8 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
               variants={!prefersReducedMotion ? cardVariants : undefined}
               className="border rounded-lg overflow-hidden transition-all duration-300"
               style={{
-                backgroundColor: "rgba(255,255,255,0.85)",
-                border: "3px solid rgba(0,0,0,0.25)",
+                backgroundColor: "#FFF8EE",
+                border: "3px solid #1A0C06",
               }}
               whileHover={
                 !prefersReducedMotion
@@ -59,10 +59,10 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
               }
             >
               {/* Card header */}
-              <div className="px-6 py-4 border-b" style={{ borderColor: "rgba(0,0,0,0.1)" }}>
+              <div className="px-6 py-4 border-b" style={{ borderColor: "rgba(26,12,6,0.15)" }}>
                 <h3
                   className="text-sm uppercase tracking-[0.08em] font-semibold"
-                  style={{ color: "#E5B80B" }}
+                  style={{ color: "#D4941A" }}
                 >
                   {group.label}
                 </h3>
@@ -78,10 +78,10 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
                       style={{
                         backgroundColor: "transparent",
                         borderColor: "#B3382C",
-                        color: "#000000",
+                        color: "#1A0C06",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.05)";
+                        e.currentTarget.style.backgroundColor = "rgba(179,56,44,0.08)";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.backgroundColor = "transparent";

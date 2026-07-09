@@ -71,11 +71,11 @@ export default function HeroSection() {
       <div
         className="absolute top-0 right-0 pointer-events-none max-md:hidden"
         style={{
-          width: "33.333%",
+          width: "50%",
           height: "100%",
           zIndex: 1,
           background:
-            "radial-gradient(ellipse at 80% 40%, rgba(179,56,44,0.18), transparent 65%)",
+            "radial-gradient(ellipse at 70% 30%, rgba(179,56,44,0.35), rgba(179,56,44,0.08) 50%, transparent 75%)",
         }}
       />
 
@@ -125,7 +125,7 @@ function Name({ desktop }: { desktop?: boolean }) {
   return (
     <h1
       className={`font-bold leading-[0.98] mb-6 font-heading ${desktop ? "text-[72px]" : "text-[36px] sm:text-[40px]"}`}
-      style={{ color: "#F5F1EC" }}
+      style={{ color: "#FFF5E8" }}
     >
       Krupa Parmar
     </h1>
@@ -134,7 +134,7 @@ function Name({ desktop }: { desktop?: boolean }) {
 
 function Subhead() {
   return (
-    <p className="text-[16px] font-medium mb-5" style={{ color: "#D8D2C9" }}>
+    <p className="text-[16px] font-medium mb-5" style={{ color: "#E8D5B0" }}>
       Building end-to-end products
     </p>
   );
@@ -144,7 +144,7 @@ function Description() {
   return (
     <p
       className="text-[14px] leading-[1.65] mb-12 max-md:w-full"
-      style={{ color: "#A69C97", maxWidth: "400px" }}
+      style={{ color: "#D4B89C", maxWidth: "400px" }}
     >
       From concept to launch — I architect the backend, design the frontend, and
       connect the dots between them.
@@ -160,8 +160,8 @@ function Actions() {
         className="inline-flex items-center gap-2 px-[22px] py-[11px] rounded text-sm font-semibold no-underline transition-all duration-200"
         style={{
           backgroundColor: "#B3382C",
-          color: "#FBEFEC",
-          boxShadow: "0 4px 20px rgba(179,56,44,0.4)",
+          color: "#FFFDF9",
+          boxShadow: "0 4px 24px rgba(179,56,44,0.5)",
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
@@ -178,8 +178,8 @@ function Actions() {
         href="/contact"
         className="text-sm font-semibold no-underline"
         style={{
-          color: "#F5F1EC",
-          borderBottom: "1px solid",
+          color: "#FFF5E8",
+          borderBottom: "1px solid #E8D5B0",
           paddingBottom: "2px",
         }}
       >

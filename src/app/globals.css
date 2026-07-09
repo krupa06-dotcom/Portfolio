@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --bg-base:       #FAF7F2;
-    --text-heading:  #16130F;
-    --text-body:     #55504A;
-    --text-muted:    #8A857D;
+    --bg-base:       #FFF8EE;
+    --text-heading:  #1A0C06;
+    --text-body:     #6B3A26;
+    --text-muted:    #BF8A6E;
     --accent:        #B3382C;
     --accent-hover:  #8F2C22;
-    --border:        #E4DDD1;
+    --border:        #E4CAAC;
   }
 
   body {
@@ -115,7 +115,7 @@
   /* ── Scrollbar ─────────────────────────────────────────── */
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(228, 221, 209, 0.6) transparent;
+    scrollbar-color: rgba(228, 202, 172, 0.5) transparent;
   }
 
   /* ── Reduced motion ────────────────────────────────────── */
@@ -137,20 +137,21 @@
   }
 
   .tag {
-    @apply font-mono text-[11px] uppercase tracking-[0.08em] px-3 py-1.5 hairline rounded-md text-muted;
+    @apply font-mono text-[11px] uppercase tracking-[0.08em] px-3 py-1.5 hairline rounded-md;
+    color: #BF8A6E;
   }
 
   /* Warm directional shadow — consistent light source top-left across all elevated elements */
   .shadow-warm {
     box-shadow:
-      0 1px 3px  rgba(60, 40, 30, 0.06),
-      0 4px 16px rgba(60, 40, 30, 0.08);
+      0 1px 3px  rgba(26, 12, 6, 0.06),
+      0 4px 16px rgba(26, 12, 6, 0.08);
   }
 
   .shadow-warm-lg {
     box-shadow:
-      0 2px 6px  rgba(60, 40, 30, 0.06),
-      0 8px 28px rgba(60, 40, 30, 0.10);
+      0 2px 6px  rgba(26, 12, 6, 0.06),
+      0 8px 28px rgba(26, 12, 6, 0.10);
   }
 
   /* Accent button glow — adapted for light bg (shadow, not glow ring) */

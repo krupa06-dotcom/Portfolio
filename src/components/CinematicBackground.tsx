@@ -64,7 +64,7 @@ export default function CinematicBackground() {
       aria-hidden="true"
     >
       {/* ── Base background ─────────────────────────────── */}
-      <div className="absolute inset-0" style={{ backgroundColor: "#FAF7F2" }} />
+      <div className="absolute inset-0" style={{ backgroundColor: "#FFF8EE" }} />
 
       {!quiet && (
         <>
@@ -82,7 +82,7 @@ export default function CinematicBackground() {
               width: "80vw",
               height: "80vw",
               background:
-                "radial-gradient(circle, rgba(255,253,249,0.18) 0%, transparent 68%)",
+                "radial-gradient(circle, rgba(255,243,224,0.35) 0%, transparent 68%)",
               filter: "blur(100px)",
             }}
           />
@@ -99,7 +99,7 @@ export default function CinematicBackground() {
               width: "38vw",
               height: "38vw",
               background:
-                "radial-gradient(circle, rgba(255,248,230,0.20) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(255,232,200,0.30) 0%, transparent 65%)",
               filter: "blur(80px)",
             }}
           />
@@ -112,7 +112,7 @@ export default function CinematicBackground() {
             className={`absolute -top-1/4 -left-1/4 w-[60vw] h-[60vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-1" : ""}`}
             style={{
               background:
-                "radial-gradient(circle, rgba(228,218,204,0.20) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(228,202,172,0.25) 0%, transparent 70%)",
               filter: "blur(120px)",
             }}
           />
@@ -120,7 +120,7 @@ export default function CinematicBackground() {
             className={`absolute -bottom-1/4 -right-1/4 w-[50vw] h-[50vw] rounded-full ${mounted && !reducedMotion ? "animate-aurora-2" : ""}`}
             style={{
               background:
-                "radial-gradient(circle, rgba(228,218,204,0.14) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(228,202,172,0.20) 0%, transparent 70%)",
               filter: "blur(120px)",
             }}
           />
@@ -135,7 +135,7 @@ export default function CinematicBackground() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 45%, rgba(240,234,224,0.55) 100%)",
+            "radial-gradient(ellipse at center, transparent 45%, rgba(231,213,191,0.50) 100%)",
         }}
       />
 
@@ -173,7 +173,7 @@ export default function CinematicBackground() {
           className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle, rgba(255,248,230,0.14) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(255,232,200,0.20) 0%, transparent 70%)",
             willChange: "transform",
           }}
         />
