@@ -121,10 +121,10 @@ export default function AdminDashboard({
         }`}
       >
         <div className="p-4 border-b border-border/80">
-          <p className="font-heading font-semibold text-sm tracking-[-0.02em]">
+          <p className="font-heading font-semibold text-sm tracking-[-0.02em] text-heading">
             Admin Panel
           </p>
-          <p className="text-[10px] text-muted/60 font-mono tracking-[0.08em] uppercase mt-0.5">
+          <p className="text-[10px] text-label font-mono tracking-[0.08em] uppercase mt-0.5">
             Manage your portfolio
           </p>
         </div>
@@ -142,14 +142,14 @@ export default function AdminDashboard({
                 }}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-body transition-all ${
                   isActive
-                    ? "bg-surface text-primary border border-border/80"
-                    : "text-muted hover:text-primary hover:bg-[#E3DACE] border border-transparent"
+                    ? "bg-surface text-heading border border-border/80"
+                    : "text-label hover:text-heading hover:bg-surface-dim border border-transparent"
                 }`}
               >
                 <Icon className="w-4 h-4 shrink-0" />
                 <span className="font-medium">{t.label}</span>
                 {t.id === "messages" && unreadCount > 0 && (
-                  <span className="ml-auto flex items-center justify-center w-5 h-5 rounded-full bg-primary/10 text-[10px] font-mono text-primary/60 font-medium">
+                  <span className="ml-auto flex items-center justify-center w-5 h-5 rounded-full bg-accent/10 text-[10px] font-mono text-accent font-medium">
                     {unreadCount}
                   </span>
                 )}
@@ -161,7 +161,7 @@ export default function AdminDashboard({
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border/80">
           <button
             onClick={handleSignOut}
-            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm text-muted hover:text-primary hover:bg-[#E3DACE] transition-all"
+            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm text-label hover:text-heading hover:bg-surface-dim transition-all"
           >
             <LogOut className="w-4 h-4" />
             Sign Out
@@ -175,17 +175,17 @@ export default function AdminDashboard({
         <div className="lg:hidden flex items-center gap-3 p-4 border-b border-border/80">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="p-2 -ml-2 text-muted hover:text-primary"
+            className="p-2 -ml-2 text-label hover:text-heading"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
           <div>
-            <p className="font-heading font-semibold text-sm tracking-[-0.02em] capitalize">
+            <p className="font-heading font-semibold text-sm tracking-[-0.02em] text-heading capitalize">
               {tab}
             </p>
-            <p className="text-[10px] text-muted/60 font-mono tracking-[0.08em] uppercase">
+            <p className="text-[10px] text-label font-mono tracking-[0.08em] uppercase">
               {unreadCount > 0 ? `${unreadCount} unread` : "Manage content"}
             </p>
           </div>
@@ -447,7 +447,7 @@ export default function AdminDashboard({
                       key={msg.id}
                       className={`group rounded-xl border transition-all ${
                         msg.is_read
-                           ? "bg-[#E3DACE] border-border/80 opacity-60 hover:opacity-100"
+                           ? "bg-surface-dim border-border/80 opacity-60 hover:opacity-100"
                           : "bg-surface border-border/80"
                       }`}
                     >
@@ -455,17 +455,17 @@ export default function AdminDashboard({
                         <div className="flex items-start justify-between gap-4 mb-3">
                           <div className="min-w-0">
                             <div className="flex items-center gap-2.5 flex-wrap">
-                              <span className="font-heading font-semibold text-sm text-primary tracking-[-0.02em]">
+                              <span className="font-heading font-semibold text-sm text-heading tracking-[-0.02em]">
                                 {msg.name}
                               </span>
                               {!msg.is_read && (
-                                <span className="w-2 h-2 rounded-full bg-primary/20" />
+                                <span className="w-2 h-2 rounded-full bg-accent/20" />
                               )}
-                              <span className="text-xs text-muted/60 font-mono">
+                              <span className="text-xs text-label font-mono">
                                 {msg.email}
                               </span>
                             </div>
-                            <p className="text-[11px] text-muted/40 font-mono tracking-[0.08em] uppercase mt-0.5">
+                            <p className="text-[11px] text-label font-mono tracking-[0.08em] uppercase mt-0.5">
                               {new Date(msg.created_at).toLocaleDateString("en-US", {
                                 year: "numeric",
                                 month: "long",
@@ -480,11 +480,11 @@ export default function AdminDashboard({
                               await markMessageRead(msg.id, !msg.is_read);
                               router.refresh();
                             }}
-                             className={`shrink-0 p-2 rounded-lg border transition-all ${
-                              msg.is_read
-                                ? "border-border/80 text-muted/50 hover:text-primary hover:border-primary/20"
-                                : "border-border/80 text-muted hover:text-primary hover:border-primary/20"
-                            }`}
+                           className={`shrink-0 p-2 rounded-lg border transition-all ${
+                            msg.is_read
+                              ? "border-border/80 text-label hover:text-heading hover:border-heading/20"
+                              : "border-border/80 text-label hover:text-heading hover:border-heading/20"
+                          }`}
                             title={msg.is_read ? "Mark as unread" : "Mark as read"}
                           >
                             {msg.is_read ? (
@@ -494,7 +494,7 @@ export default function AdminDashboard({
                             )}
                           </button>
                         </div>
-                        <p className="text-sm text-muted/80 leading-relaxed whitespace-pre-wrap">
+                        <p className="text-sm text-body leading-relaxed whitespace-pre-wrap">
                           {msg.message}
                         </p>
                       </div>
@@ -531,12 +531,12 @@ function StatCard({
   return (
     <div className="bg-surface rounded-xl border border-border/80 p-4">
       <div className="w-8 h-8 rounded-lg bg-surface border border-border/60 flex items-center justify-center mb-3">
-        <Icon className="w-4 h-4 text-muted" />
+        <Icon className="w-4 h-4 text-label" />
       </div>
-      <p className="text-2xl font-heading font-semibold tracking-[-0.02em]">{count}</p>
+      <p className="text-2xl font-heading font-semibold text-heading tracking-[-0.02em]">{count}</p>
       <div className="flex items-center gap-2">
-        <p className="text-[11px] text-muted/60 font-mono tracking-[0.08em] uppercase">{label}</p>
-        {sub && <span className="text-[10px] text-muted font-mono">{sub}</span>}
+        <p className="text-[11px] text-label font-mono tracking-[0.08em] uppercase">{label}</p>
+        {sub && <span className="text-[10px] text-label font-mono">{sub}</span>}
       </div>
     </div>
   );
@@ -559,11 +559,11 @@ function Section({
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="font-heading font-semibold text-xl tracking-[-0.02em] text-primary">
+          <h2 className="font-heading font-semibold text-xl tracking-[-0.02em] text-heading">
             {title}
           </h2>
           {count !== undefined && (
-            <p className="text-xs text-muted/50 font-mono tracking-[0.08em] uppercase mt-0.5">
+            <p className="text-xs text-label font-mono tracking-[0.08em] uppercase mt-0.5">
               {count} {count === 1 ? "entry" : "entries"}
             </p>
           )}
@@ -595,12 +595,12 @@ function EmptyState({
   return (
     <div className="flex flex-col items-center justify-center py-16 px-6 rounded-xl border border-dashed border-border/60">
       <div className="w-12 h-12 rounded-xl bg-surface flex items-center justify-center mb-4">
-        <Icon className="w-6 h-6 text-muted/30" />
+        <Icon className="w-6 h-6 text-label" />
       </div>
-      <p className="font-heading font-semibold text-sm text-muted/60 mb-1">
+      <p className="font-heading font-semibold text-sm text-label mb-1">
         {message}
       </p>
-      <p className="text-xs text-muted/30 text-center max-w-xs">{action}</p>
+      <p className="text-xs text-label text-center max-w-xs">{action}</p>
     </div>
   );
 }
@@ -617,18 +617,18 @@ function ListItem({
   actions: React.ReactNode;
 }) {
   return (
-    <div className="group flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 bg-surface rounded-xl border border-border/80 hover:border-primary/10 transition-all">
+    <div className="group flex items-center justify-between gap-4 px-4 sm:px-5 py-3.5 bg-surface rounded-xl border border-border/80 hover:border-heading/10 transition-all">
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="font-heading font-semibold text-sm text-primary tracking-[-0.02em] truncate">
+          <h3 className="font-heading font-semibold text-sm text-heading tracking-[-0.02em] truncate">
             {title}
           </h3>
           {badge && (
             <span
               className={`text-[10px] font-mono tracking-[0.08em] uppercase px-1.5 py-0.5 rounded border ${
                 badge.color === "primary"
-                  ? "text-primary border-primary/20"
-                  : "text-muted/60 border-border/60"
+                  ? "text-heading border-heading/20"
+                  : "text-on-badge border-border/60"
               }`}
             >
               {badge.label}
@@ -636,7 +636,7 @@ function ListItem({
           )}
         </div>
         {subtitle && (
-          <p className="text-xs text-muted/50 truncate mt-0.5">{subtitle}</p>
+          <p className="text-xs text-label truncate mt-0.5">{subtitle}</p>
         )}
       </div>
       <div className="flex items-center gap-1 shrink-0 opacity-60 group-hover:opacity-100 transition-opacity">
@@ -666,9 +666,9 @@ function IconButton({
     onClick?.();
   }
 
-  const classes = `p-2 rounded-lg border border-transparent text-muted/50 hover:text-${
-    color === "red" ? "red-400" : "primary"
-  } hover:border-${color === "red" ? "red-400/20" : "primary/10"} transition-all`;
+  const classes = `p-2 rounded-lg border border-transparent text-label hover:text-${
+    color === "red" ? "red-400" : "heading"
+  } hover:border-${color === "red" ? "red-400/20" : "heading/10"} transition-all`;
 
   if (href) {
     return (
@@ -711,7 +711,7 @@ function FormActions({
       <button
         type="button"
         onClick={onCancel}
-        className="px-5 py-2.5 border border-border/80 text-muted/60 font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-primary hover:border-primary/20 transition-all"
+        className="px-5 py-2.5 border border-border/80 text-label font-heading font-semibold text-xs uppercase tracking-[0.08em] rounded-lg hover:text-heading hover:border-heading/20 transition-all"
       >
         Cancel
       </button>
@@ -766,7 +766,7 @@ function UploadButton({
         type="button"
         onClick={() => inputRef.current?.click()}
         disabled={uploading}
-        className="flex items-center gap-1.5 px-3 py-2 border border-border/80 rounded-lg text-xs text-muted/60 font-body hover:text-primary hover:border-primary/20 transition-all disabled:opacity-60"
+        className="flex items-center gap-1.5 px-3 py-2 border border-border/80 rounded-lg text-xs text-label font-body hover:text-heading hover:border-heading/20 transition-all disabled:opacity-60"
       >
         <Upload className="w-3.5 h-3.5" />
         {uploading ? "Uploading..." : "Upload"}
@@ -801,7 +801,7 @@ function FormCard({
         <button
           type="button"
           onClick={onCancel}
-          className="p-1.5 rounded-lg text-muted/40 hover:text-primary hover:bg-background transition-all"
+          className="p-1.5 rounded-lg text-label hover:text-heading hover:bg-background transition-all"
         >
           <X className="w-4 h-4" />
         </button>
@@ -820,7 +820,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block font-mono text-[11px] tracking-[0.08em] uppercase text-muted/60 mb-1.5">
+      <label className="block font-mono text-[11px] tracking-[0.08em] uppercase text-label mb-1.5">
         {label}
       </label>
       {children}
@@ -855,7 +855,7 @@ function ProjectForm({
             name="title"
             defaultValue={project?.title ?? ""}
             required
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="URL">
@@ -864,7 +864,7 @@ function ProjectForm({
             name="url"
             defaultValue={project?.url ?? ""}
             required
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Cover Image">
@@ -875,7 +875,7 @@ function ProjectForm({
               value={coverUrl}
               onChange={(e) => setCoverUrl(e.target.value)}
               placeholder="https://..."
-              className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
+              className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all font-mono text-xs"
             />
             <UploadButton bucket="project-covers" onUploaded={(url) => setCoverUrl(url)} />
           </div>
@@ -892,7 +892,7 @@ function ProjectForm({
             defaultValue={
               project ? JSON.stringify(project.tags) : '["NEXT.JS","SUPABASE"]'
             }
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all font-mono text-xs"
           />
         </Field>
         <Field label="Sort Order">
@@ -900,7 +900,7 @@ function ProjectForm({
             type="number"
             name="sort_order"
             defaultValue={project?.sort_order ?? 0}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <div className="flex items-end pb-2.5">
@@ -912,7 +912,7 @@ function ProjectForm({
               defaultChecked={project?.is_featured ?? false}
               className="w-4 h-4 rounded border-border/80 bg-background accent-primary"
             />
-            <span className="font-mono text-xs tracking-[0.08em] uppercase text-muted/60 group-hover:text-muted transition-colors">
+            <span className="font-mono text-xs tracking-[0.08em] uppercase text-label group-hover:text-heading transition-colors">
               Featured project
             </span>
           </label>
@@ -924,7 +924,7 @@ function ProjectForm({
           defaultValue={project?.description ?? ""}
           required
           rows={3}
-          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
+          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all resize-none"
         />
       </Field>
       <FormActions submitLabel={project ? "Update Project" : "Create Project"} onCancel={onCancel} />
@@ -957,7 +957,7 @@ function ExperienceForm({
             name="role"
             defaultValue={experience?.role ?? ""}
             required
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Company">
@@ -966,7 +966,7 @@ function ExperienceForm({
             name="company"
             defaultValue={experience?.company ?? ""}
             required
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Start Date">
@@ -974,7 +974,7 @@ function ExperienceForm({
             type="date"
             name="start_date"
             defaultValue={experience?.start_date?.slice(0, 10) ?? ""}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="End Date">
@@ -982,7 +982,7 @@ function ExperienceForm({
             type="date"
             name="end_date"
             defaultValue={experience?.end_date?.slice(0, 10) ?? ""}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Sort Order">
@@ -990,7 +990,7 @@ function ExperienceForm({
             type="number"
             name="sort_order"
             defaultValue={experience?.sort_order ?? 0}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
       </div>
@@ -999,7 +999,7 @@ function ExperienceForm({
           name="description"
           defaultValue={experience?.description ?? ""}
           rows={3}
-          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
+          className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all resize-none"
         />
       </Field>
       <FormActions submitLabel={experience ? "Update Experience" : "Create Experience"} onCancel={onCancel} />
@@ -1032,7 +1032,7 @@ function HackathonForm({
             name="name"
             defaultValue={hackathon?.name ?? ""}
             required
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Result">
@@ -1041,7 +1041,7 @@ function HackathonForm({
             name="result"
             defaultValue={hackathon?.result ?? ""}
             placeholder='e.g. "Winner", "Finalist"'
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Date">
@@ -1049,7 +1049,7 @@ function HackathonForm({
             type="date"
             name="date"
             defaultValue={hackathon?.date?.slice(0, 10) ?? ""}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="URL">
@@ -1058,7 +1058,7 @@ function HackathonForm({
             name="url"
             defaultValue={hackathon?.url ?? ""}
             placeholder="Devpost or event link"
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Sort Order">
@@ -1066,7 +1066,7 @@ function HackathonForm({
             type="number"
             name="sort_order"
             defaultValue={hackathon?.sort_order ?? 0}
-            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
       </div>
@@ -1097,13 +1097,13 @@ function SkillForm({
         <Field label="Category">
           <select
             name="category"
-            defaultValue={skill?.category ?? "FRONTEND"}
+            defaultValue={skill?.category ?? "Frontend"}
             required
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           >
-            <option value="FRONTEND">FRONTEND</option>
-            <option value="BACKEND & DATABASE">BACKEND & DATABASE</option>
-            <option value="TOOLS & WORKFLOW">TOOLS & WORKFLOW</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend & Database">Backend & Database</option>
+            <option value="Tools & Workflow">Tools & Workflow</option>
           </select>
         </Field>
         <Field label="Name">
@@ -1112,7 +1112,7 @@ function SkillForm({
             name="name"
             defaultValue={skill?.name ?? ""}
             required
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
         <Field label="Sort Order">
@@ -1120,7 +1120,7 @@ function SkillForm({
             type="number"
             name="sort_order"
             defaultValue={skill?.sort_order ?? 0}
-            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+            className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
           />
         </Field>
       </div>
@@ -1151,12 +1151,12 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
             {headshotUrl ? (
               <Image src={headshotUrl} alt="Headshot" fill className="object-cover" />
             ) : (
-              <User className="w-6 h-6 text-muted/60" />
+              <User className="w-6 h-6 text-label" />
             )}
           </div>
               <div>
                 <p className="font-heading font-semibold text-sm tracking-[-0.02em]">Profile Photo</p>
-                <p className="text-xs text-muted/50 mt-0.5">Upload a headshot image</p>
+                <p className="text-xs text-label mt-0.5">Upload a headshot image</p>
               </div>
             </div>
 
@@ -1168,7 +1168,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                   value={headshotUrl}
                   onChange={(e) => setHeadshotUrl(e.target.value)}
                   placeholder="https://..."
-                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
+                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all font-mono text-xs"
                 />
                 <UploadButton bucket="project-covers" onUploaded={(url) => setHeadshotUrl(url)} />
               </div>
@@ -1182,7 +1182,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                   value={resumeUrl}
                   onChange={(e) => setResumeUrl(e.target.value)}
                   placeholder="https://..."
-                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
+                  className="flex-1 bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all font-mono text-xs"
                 />
                 <UploadButton bucket="resumes" onUploaded={(url) => setResumeUrl(url)} />
               </div>
@@ -1192,7 +1192,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
           <div className="p-5 sm:p-6 bg-surface rounded-xl border border-border/80 space-y-5">
             <div className="pb-4 border-b border-border/80">
               <p className="font-heading font-semibold text-sm tracking-[-0.02em]">About</p>
-              <p className="text-xs text-muted/50 mt-0.5">Your bio and skills</p>
+              <p className="text-xs text-label mt-0.5">Your bio and skills</p>
             </div>
 
             <Field label="Bio">
@@ -1201,7 +1201,7 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                 defaultValue={profile?.bio ?? ""}
                 rows={4}
                 placeholder="Write a short bio about yourself..."
-                className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all resize-none"
+                className="w-full bg-background border border-border/80 rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all resize-none"
               />
             </Field>
 
@@ -1214,9 +1214,9 @@ function ProfileForm({ profile }: { profile: Profile | null }) {
                     ? JSON.stringify(profile.skills)
                     : '["HTML","CSS","JavaScript","React.js","Node.js","Next.js","SQL","PHP"]'
                 }
-                className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all font-mono text-xs"
+                className="w-full bg-background border border-border rounded-lg px-3 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all font-mono text-xs"
               />
-              <p className="text-[11px] text-muted/30 mt-1.5 font-mono">
+              <p className="text-[11px] text-label mt-1.5 font-mono">
                 JSON array of skills, e.g. &quot;React&quot; or &quot;Node.js&quot;
               </p>
             </Field>

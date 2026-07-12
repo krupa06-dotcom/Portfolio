@@ -22,9 +22,9 @@ function SocialLink({
       href={href}
       {...externalProps}
       className="transition-colors"
-      style={{ color: "#BF8A6E" }}
-      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#FFF5E8"; }}
-      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "#BF8A6E"; }}
+      style={{ color: "var(--dark-text-label)" }}
+      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--dark-text-heading)"; }}
+      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--dark-text-label)"; }}
       aria-label={label}
     >
       {children}
@@ -39,7 +39,7 @@ export default function Footer() {
     <footer
       className="border-t"
       style={{
-        backgroundColor: "#0E0C0B",
+        backgroundColor: "var(--dark-bg)",
         borderColor: "rgba(255,255,255,0.1)",
       }}
     >
@@ -48,16 +48,16 @@ export default function Footer() {
         <div className="flex items-center gap-2 text-sm">
           <span
             className="font-heading font-bold"
-            style={{ color: "#FFF5E8" }}
+            style={{ color: "var(--dark-text-heading)" }}
           >
             KP
           </span>
-          <span className="hidden sm:inline" style={{ color: "#BF8A6E" }}>
+          <span className="hidden sm:inline" style={{ color: "var(--dark-text-label)" }}>
             &middot;
           </span>
           <span
             className="hidden sm:inline"
-            style={{ color: "#BF8A6E" }}
+            style={{ color: "var(--dark-text-label)" }}
           >
             Built with Next.js &amp; Supabase
           </span>
@@ -79,7 +79,7 @@ export default function Footer() {
         {/* Right side — Copyright */}
         <div
           className="text-xs font-mono tracking-[0.08em]"
-          style={{ color: "#BF8A6E" }}
+          style={{ color: "var(--dark-text-label)" }}
         >
           &copy; {year} Krupa Parmar
         </div>

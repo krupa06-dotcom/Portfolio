@@ -45,7 +45,7 @@ export default function AdminLogin() {
           <div className="flex justify-center mb-6">
             <div className="w-12 h-12 rounded-xl bg-surface border border-border/80 flex items-center justify-center">
               <svg
-                className="w-6 h-6 text-muted/60"
+                className="w-6 h-6 text-label"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -64,7 +64,7 @@ export default function AdminLogin() {
             <h1 className="font-heading font-semibold text-xl text-primary tracking-[-0.02em]">
               Admin Panel
             </h1>
-            <p className="text-sm text-muted/70 mt-1">
+            <p className="text-sm text-body mt-1">
               Sign in to manage your portfolio
             </p>
           </div>
@@ -73,7 +73,7 @@ export default function AdminLogin() {
             <div>
               <label
                 htmlFor="email"
-                className="block font-mono text-[11px] tracking-[0.08em] uppercase text-muted/60 mb-1.5"
+                className="block font-mono text-[11px] tracking-[0.08em] uppercase text-label mb-1.5"
               >
                 Email
               </label>
@@ -82,7 +82,7 @@ export default function AdminLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-background border border-border/80 rounded-lg px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+                className="w-full bg-background border border-border/80 rounded-lg px-4 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
                 placeholder="you@example.com"
                 required
               />
@@ -91,7 +91,7 @@ export default function AdminLogin() {
             <div>
               <label
                 htmlFor="password"
-                className="block font-mono text-[11px] tracking-[0.08em] uppercase text-muted/60 mb-1.5"
+                className="block font-mono text-[11px] tracking-[0.08em] uppercase text-label mb-1.5"
               >
                 Password
               </label>
@@ -100,7 +100,7 @@ export default function AdminLogin() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-background border border-border/80 rounded-lg px-4 py-2.5 text-sm text-primary placeholder:text-muted/50 focus:outline-none focus:border-primary/20 focus:ring-1 focus:ring-primary/10 transition-all"
+                className="w-full bg-background border border-border/80 rounded-lg px-4 py-2.5 text-sm text-heading placeholder:text-label focus:outline-none focus:border-accent/30 focus:ring-1 focus:ring-accent/10 transition-all"
                 placeholder="Enter your password"
                 required
               />
@@ -157,7 +157,7 @@ export default function AdminLogin() {
           </form>
         </div>
 
-        <p className="text-center mt-6 text-[11px] text-muted/30 font-mono tracking-[0.08em] uppercase">
+        <p className="text-center mt-6 text-[11px] text-label font-mono tracking-[0.08em] uppercase">
           Portfolio Admin
         </p>
       </div>

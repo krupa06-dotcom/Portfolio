@@ -1,100 +1,133 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { stagger, fadeUp } from "@/lib/motion";
 import type { Skill } from "@/lib/types";
+
+const defaultEasing: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+const cardVariant = {
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { ease: defaultEasing, duration: 0.4, delay: i * 0.04 },
+  }),
+};
+
+const CATEGORY_ORDER = ["Frontend", "Backend & Database", "Tools & Workflow"];
 
 export default function SkillsStrip({ skills }: { skills: Skill[] }) {
   const prefersReducedMotion = useReducedMotion();
 
-  const groups = skills.reduce<{ label: string; items: string[] }[]>((acc, s) => {
-    const existing = acc.find((g) => g.label === s.category);
-    if (existing) {
-      existing.items.push(s.name);
-    } else {
-      acc.push({ label: s.category, items: [s.name] });
-    }
-    return acc;
-  }, []);
+  const groups = CATEGORY_ORDER.map((category) => {
+    const items = skills
+      .filter((s) => s.category === category)
+      .sort((a, b) => a.sort_order - b.sort_order);
+    return { category, items };
+  }).filter((g) => g.items.length > 0);
+
+  let globalIndex = 0;
 
   return (
-    <section className="w-full py-24 max-md:py-16" style={{ backgroundColor: "#B3382C" }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section
+      className="w-full"
+      style={{ backgroundColor: "var(--skills-bg)" }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24 lg:py-28">
         {/* Header */}
-        <div className="text-center mb-16">
-          <p 
-            className="text-sm tracking-[0.12em] uppercase mb-4"
-            style={{ color: "#F0C040" }}
+        <div className="text-center mb-14">
+          <p
+            style={{
+              fontSize: "11px",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              color: "var(--skills-text-label)",
+            }}
           >
             WHAT I WORK WITH
           </p>
-          <h2 
-            className="font-heading text-3xl sm:text-4xl lg:text-5xl tracking-[-0.02em]"
-            style={{ color: "#FFF8EE" }}
+          <h2
+            className="font-heading"
+            style={{
+              fontSize: "clamp(30px, 4vw, 36px)",
+              color: "var(--skills-text-heading)",
+              marginTop: "10px",
+            }}
           >
-            Skills & Technologies
+            Skills &amp; Technologies
           </h2>
         </div>
 
-        <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-          variants={!prefersReducedMotion ? stagger : undefined}
-          initial={!prefersReducedMotion ? "hidden" : undefined}
-          whileInView={!prefersReducedMotion ? "visible" : undefined}
-          viewport={{ once: true, margin: "-40px" }}
-        >
-          {groups.map((group) => (
-            <motion.div
-              key={group.label}
-              variants={!prefersReducedMotion ? fadeUp : undefined}
-              className="border rounded-lg overflow-hidden transition-all duration-300"
-              style={{
-                backgroundColor: "#FFF8EE",
-                border: "3px solid #1A0C06",
-              }}
-              whileHover={
-                !prefersReducedMotion
-                  ? { y: -4, transition: { duration: 0.2 } }
-                  : undefined
-              }
-            >
-              {/* Card header */}
-              <div className="px-6 py-4 border-b" style={{ borderColor: "rgba(26,12,6,0.15)" }}>
-                <h3
-                  className="text-sm uppercase tracking-[0.08em] font-semibold"
-                  style={{ color: "#D4941A" }}
-                >
-                  {group.label}
-                </h3>
-              </div>
+        {/* Category groups */}
+        <div className="space-y-12">
+          {groups.map((group, gi) => {
+            const number = String(gi + 1).padStart(2, "0");
 
-              {/* Card body */}
-              <div className="px-6 py-6">
-                <div className="flex flex-wrap gap-3">
-                  {group.items.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-2 text-sm font-medium rounded-full border transition-colors duration-200 cursor-default"
-                      style={{
-                        backgroundColor: "transparent",
-                        borderColor: "#B3382C",
-                        color: "#1A0C06",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = "rgba(179,56,44,0.08)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = "transparent";
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
+            return (
+              <motion.div
+                key={group.category}
+                custom={gi}
+                variants={!prefersReducedMotion ? { ...cardVariant } : undefined}
+                initial={!prefersReducedMotion ? "hidden" : undefined}
+                whileInView={!prefersReducedMotion ? "visible" : undefined}
+                viewport={{ once: true, margin: "-40px" }}
+              >
+                {/* Category label */}
+                <div className="flex items-center gap-3 mb-5">
+                  <span
+                    className="font-heading"
+                    style={{
+                      fontSize: "clamp(24px, 2.5vw, 30px)",
+                      color: "#facc15",
+                    }}
+                  >
+                    {number}
+                  </span>
+                  <span
+                    className="uppercase font-semibold tracking-[0.08em]"
+                    style={{
+                      fontSize: "11px",
+                      color: "#facc15",
+                    }}
+                  >
+                    {group.category}
+                  </span>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+
+                {/* Skills grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                  {group.items.map((skill) => {
+                    const idx = globalIndex++;
+                    return (
+                      <motion.div
+                        key={skill.id}
+                        custom={idx}
+                        variants={
+                          !prefersReducedMotion ? cardVariant : undefined
+                        }
+                        initial={!prefersReducedMotion ? "hidden" : undefined}
+                        whileInView={
+                          !prefersReducedMotion ? "visible" : undefined
+                        }
+                        viewport={{ once: true, margin: "-20px" }}
+                        className="rounded-xl px-4 py-3.5 text-center font-heading font-medium backdrop-blur-sm transition-colors hover:bg-white/20"
+                        style={{
+                          backgroundColor: "rgba(255, 255, 255, 0.1)",
+                          color: "var(--skills-text-heading)",
+                          fontSize: "clamp(13px, 1.4vw, 16px)",
+                          border: "1px solid rgba(255, 255, 255, 0.3)",
+                        }}
+                      >
+                        {skill.name}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

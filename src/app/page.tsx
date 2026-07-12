@@ -5,6 +5,8 @@ import FeaturedProjects from "@/components/FeaturedProjects";
 import ExperiencePreview from "@/components/ExperiencePreview";
 import ContactCTA from "@/components/ContactCTA";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [projects, experience, skills] = await Promise.all([
     getFeaturedProjects(),

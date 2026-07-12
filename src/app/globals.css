@@ -4,7 +4,32 @@
 
 @layer base {
   :root {
-    --accent: #B3382C;
+    /* ── Light page tokens ──────────────────────────────── */
+    --bg-base:          #FAF7F2;
+    --bg-surface:        #F1ECE4;
+    --bg-muted:          #E3DACE;
+    --text-heading:      #16130F;
+    --text-body:         #3A352F;
+    --text-label:        #6B655C;
+    --text-on-badge:     #4A453F;
+    --accent:            #B3382C;
+    --accent-hover:      #8F2C22;
+    --border:            #DCD6CC;
+
+    /* ── Dark section tokens ────────────────────────────── */
+    --dark-bg:           #0E0C0B;
+    --dark-text-heading:  #F5F1EC;
+    --dark-text-body:     #D8D2C9;
+    --dark-text-label:    #A69C97;
+
+    /* ── Accent-on (text on accent backgrounds) ─────────── */
+    --accent-on:         #FFFDF9;
+
+    /* ── Skills section tokens (red background context) ─── */
+    --skills-bg:           #8C2A20;
+    --skills-text-heading: #FBEFEC;
+    --skills-text-label:   #F0C6BC;
+    --skills-divider:      rgba(245, 241, 236, 0.25);
   }
 
   body {
@@ -84,7 +109,7 @@
   /* ── Scrollbar ─────────────────────────────────────────── */
   * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(228, 202, 172, 0.5) transparent;
+    scrollbar-color: rgba(220, 214, 204, 0.5) transparent;
   }
 
   /* ── Reduced motion ────────────────────────────────────── */

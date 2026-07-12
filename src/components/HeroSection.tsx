@@ -28,7 +28,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       className="relative w-full overflow-hidden md:h-screen max-md:min-h-screen"
-      style={{ backgroundColor: "#0E0C0B" }}
+      style={{ backgroundColor: "var(--dark-bg)" }}
     >
       {/* ── Photo layer ─────────────────────────────── */}
       <motion.div
@@ -52,7 +52,7 @@ export default function HeroSection() {
           width: "48%",
           zIndex: 2,
           background:
-            "linear-gradient(90deg, #0E0C0B 0%, #0E0C0B 38%, rgba(14,12,11,0.85) 55%, rgba(14,12,11,0) 78%)",
+            "linear-gradient(90deg, var(--dark-bg) 0%, var(--dark-bg) 38%, rgba(14,12,11,0.85) 55%, rgba(14,12,11,0) 78%)",
         }}
       />
 
@@ -79,30 +79,18 @@ export default function HeroSection() {
         }}
       />
 
-      {/* ── Desktop text block ──────────────────────── */}
+      {/* ── Text block (single, responsive) ──────────── */}
       <motion.div
-        className="absolute top-[25%] left-8 lg:left-16 z-[2] max-w-[420px] lg:max-w-[480px] max-md:hidden"
+        className="relative max-md:w-full max-md:px-6 max-md:py-8 max-sm:px-4 max-sm:py-6 md:absolute md:top-[25%] md:left-8 lg:left-16 md:z-[2] md:max-w-[420px] lg:max-w-[480px]"
         style={{ transform: "translateY(-50%)", y: parallaxY }}
         {...textAnimation}
-      >
-        <Eyebrow />
-        <Name desktop />
-        <Subhead />
-        <Description />
-        <Actions />
-      </motion.div>
-
-      {/* ── Mobile text block ───────────────────────── */}
-      <div
-        className="hidden max-md:block px-6 py-8 max-sm:px-4 max-sm:py-6"
-        style={{ padding: "32px 24px" }}
       >
         <Eyebrow />
         <Name />
         <Subhead />
         <Description />
         <Actions />
-      </div>
+      </motion.div>
 
     </section>
   );
@@ -114,18 +102,18 @@ function Eyebrow() {
   return (
     <p
       className="text-[11px] uppercase tracking-[0.15em] mb-6"
-      style={{ color: "#B3382C" }}
+      style={{ color: "var(--accent)" }}
     >
       Full-Stack Developer &amp; UI/UX Designer
     </p>
   );
 }
 
-function Name({ desktop }: { desktop?: boolean }) {
+function Name() {
   return (
     <h1
-      className={`font-bold leading-[0.98] mb-6 font-heading ${desktop ? "text-[72px]" : "text-[36px] sm:text-[40px]"}`}
-      style={{ color: "#FFF5E8" }}
+      className="font-bold leading-[0.98] mb-6 font-heading text-[36px] sm:text-[40px] md:text-[72px]"
+      style={{ color: "var(--dark-text-heading)" }}
     >
       Krupa Parmar
     </h1>
@@ -134,7 +122,7 @@ function Name({ desktop }: { desktop?: boolean }) {
 
 function Subhead() {
   return (
-    <p className="text-[16px] font-medium mb-5" style={{ color: "#E8D5B0" }}>
+    <p className="text-[16px] font-medium mb-5" style={{ color: "var(--dark-text-body)" }}>
       Building end-to-end products
     </p>
   );
@@ -144,7 +132,7 @@ function Description() {
   return (
     <p
       className="text-[14px] leading-[1.65] mb-12 max-md:w-full"
-      style={{ color: "#D4B89C", maxWidth: "400px" }}
+      style={{ color: "var(--dark-text-body)", maxWidth: "400px" }}
     >
       From concept to launch — I architect the backend, design the frontend, and
       connect the dots between them.
@@ -159,17 +147,17 @@ function Actions() {
         href="/projects"
         className="inline-flex items-center gap-2 px-[22px] py-[11px] rounded text-sm font-semibold no-underline transition-all duration-200"
         style={{
-          backgroundColor: "#B3382C",
-          color: "#FFFDF9",
+          backgroundColor: "var(--accent)",
+          color: "var(--accent-on)",
           boxShadow: "0 4px 24px rgba(179,56,44,0.5)",
         }}
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-            "#8F2C22";
+            "var(--accent-hover)";
         }}
         onMouseLeave={(e) => {
           (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-            "#B3382C";
+            "var(--accent)";
         }}
       >
         View My Work
@@ -178,8 +166,8 @@ function Actions() {
         href="/contact"
         className="text-sm font-semibold no-underline"
         style={{
-          color: "#FFF5E8",
-          borderBottom: "1px solid #E8D5B0",
+          color: "var(--dark-text-heading)",
+          borderBottom: "1px solid var(--dark-text-body)",
           paddingBottom: "2px",
         }}
       >

@@ -20,7 +20,7 @@ export default async function ExperiencePage() {
         />
         {experience.length === 0 && hackathons.length === 0 ? (
           <div className="py-20 text-center">
-            <p className="text-muted font-mono text-xs tracking-[0.08em] uppercase">
+            <p className="text-label font-mono text-xs tracking-[0.08em] uppercase">
               No experience entries yet
             </p>
           </div>

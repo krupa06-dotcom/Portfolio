@@ -42,25 +42,25 @@ export default function ExperienceTimeline({
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-mono text-xs text-muted/50 tracking-[0.08em] uppercase mb-1">
+                  <div className="font-mono text-xs text-label tracking-[0.08em] uppercase mb-1">
                     {formatDate(exp.start_date)}
                     {exp.end_date ? ` — ${formatDate(exp.end_date)}` : exp.start_date ? " — Present" : ""}
                   </div>
                   <h3 className="font-bold text-lg tracking-[-0.02em]">
                     {exp.role}
                   </h3>
-                  <p className="text-muted/70 font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
+                  <p className="text-label font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
                     {exp.company}
                   </p>
-                  <p className="text-sm text-muted/70 leading-relaxed">
+                  <p className="text-sm text-body leading-relaxed">
                     {exp.description}
                   </p>
                   {i % 2 === 0 && (
                     <div className="flex flex-wrap gap-2 mt-3">
-                      <span className="text-[10px] font-mono text-muted/60 border border-border/60 px-2 py-0.5 rounded">
+                      <span className="text-[10px] font-mono text-on-badge border border-border/60 px-2 py-0.5 rounded">
                         Full-time
                       </span>
-                      <span className="text-[10px] font-mono text-muted/60 border border-border/60 px-2 py-0.5 rounded">
+                      <span className="text-[10px] font-mono text-on-badge border border-border/60 px-2 py-0.5 rounded">
                         Remote
                       </span>
                     </div>
@@ -100,14 +100,14 @@ export default function ExperienceTimeline({
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-mono text-xs text-muted/50 tracking-[0.08em] uppercase mb-1">
+                  <div className="font-mono text-xs text-label tracking-[0.08em] uppercase mb-1">
                     {formatDate(h.date)}
                   </div>
                   <h3 className="font-bold text-lg tracking-[-0.02em]">
                     {h.name}
                   </h3>
                   {h.result && (
-                    <p className="text-muted/70 font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
+                    <p className="text-label font-mono text-xs tracking-[0.08em] uppercase mt-0.5 mb-2">
                       {h.result}
                     </p>
                   )}
@@ -116,7 +116,7 @@ export default function ExperienceTimeline({
                       href={h.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-muted hover:text-primary transition-colors underline underline-offset-2 inline-block"
+                      className="text-sm text-body hover:text-accent transition-colors underline underline-offset-2 inline-block"
                     >
                       View event
                     </a>

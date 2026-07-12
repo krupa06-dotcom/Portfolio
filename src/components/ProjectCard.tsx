@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       transition={{ ease: defaultEasing, duration: 0.25 }}
       className="group block rounded-sm border overflow-hidden no-underline transition-all duration-200"
       style={{
-        backgroundColor: "#000000",
+        backgroundColor: "var(--dark-bg)",
         borderColor: "rgba(255,255,255,0.12)",
         boxShadow:
           "0 1px 3px rgba(26, 12, 6, 0.06), 0 4px 16px rgba(26, 12, 6, 0.08)",
@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.boxShadow =
           "0 2px 6px rgba(26, 12, 6, 0.08), 0 10px 32px rgba(26, 12, 6, 0.12)";
-        (e.currentTarget as HTMLAnchorElement).style.borderColor = "#B3382C";
+        (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--accent)";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLAnchorElement).style.boxShadow =
@@ -88,20 +88,20 @@ export default function ProjectCard({ project }: { project: Project }) {
           {/* Title — heading color, clear weight */}
           <h3
             className="font-bold text-base tracking-[-0.02em]"
-            style={{ color: "#FFFFFF" }}
+            style={{ color: "var(--dark-text-heading)" }}
           >
             {project.title}
           </h3>
           <ExternalLink
             className="w-3.5 h-3.5 shrink-0 mt-0.5 transition-colors duration-200"
-            style={{ color: "rgba(255,255,255,0.45)" }}
+            style={{ color: "var(--dark-text-label)" }}
           />
         </div>
 
         {/* Description — body color */}
         <p
           className="text-sm mb-3 line-clamp-2 leading-relaxed"
-          style={{ color: "rgba(255,255,255,0.65)" }}
+          style={{ color: "var(--dark-text-body)" }}
         >
           {project.description}
         </p>
@@ -112,7 +112,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             <span
               key={tag}
               className="text-[11px] font-mono"
-              style={{ color: "rgba(255,255,255,0.4)" }}
+              style={{ color: "var(--dark-text-label)" }}
             >
               {tag}
             </span>

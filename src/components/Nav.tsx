@@ -24,9 +24,9 @@ export default function Nav() {
   const blurPx      = useTransform(scrollY, [0, 40], [isHome ? 0 : 0, 14]);
   const borderAlpha = useTransform(scrollY, [0, 40], [isHome ? 0 : 0, 0.12]);
 
-  const bg  = useMotionTemplate`rgba(255, 248, 238, ${bgOpacity})`;
+  const bg  = useMotionTemplate`rgba(250, 247, 242, ${bgOpacity})`;
   const blur = useMotionTemplate`blur(${blurPx}px)`;
-  const bdr = useMotionTemplate`rgba(228, 202, 172, ${borderAlpha})`;
+  const bdr = useMotionTemplate`rgba(220, 214, 204, ${borderAlpha})`;
 
   const [isLightNav, setIsLightNav] = useState(isHome);
   useEffect(() => {
@@ -38,8 +38,8 @@ export default function Nav() {
     }
   });
 
-  const linkColor = isLightNav ? "#FFF5E8" : "#1A0C06";
-  const activeLinkColor = isLightNav ? "#FFF5E8" : "#1A0C06";
+  const linkColor = isLightNav ? "var(--dark-text-heading)" : "var(--text-heading)";
+  const activeLinkColor = isLightNav ? "var(--dark-text-heading)" : "var(--text-heading)";
 
   function closeMobileMenu() {
     setMobileMenuOpen(false);
@@ -55,7 +55,7 @@ export default function Nav() {
         <Link
           href="/"
           className="font-heading font-bold text-xl tracking-[-0.02em] no-underline transition-colors duration-200"
-          style={{ color: isLightNav ? "#FFF5E8" : "#1A0C06" }}
+          style={{ color: isLightNav ? "var(--dark-text-heading)" : "var(--text-heading)" }}
           onClick={closeMobileMenu}
         >
           KP.
@@ -84,7 +84,7 @@ export default function Nav() {
                   <motion.span
                     layoutId="nav-indicator"
                     className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full"
-                    style={{ backgroundColor: "#B3382C" }}
+                    style={{ backgroundColor: "var(--accent)" }}
                   />
                 )}
               </Link>
@@ -106,7 +106,7 @@ export default function Nav() {
         <button
           onClick={() => setMobileMenuOpen((prev) => !prev)}
           className="md:hidden p-2 -mr-2 transition-colors duration-200"
-          style={{ color: isLightNav ? "#FFF5E8" : "#1A0C06" }}
+          style={{ color: isLightNav ? "var(--dark-text-heading)" : "var(--text-heading)" }}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -123,8 +123,8 @@ export default function Nav() {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="md:hidden overflow-hidden border-t"
             style={{
-              backgroundColor: "#FFF8EE",
-              borderColor: "rgba(228, 202, 172, 0.8)",
+              backgroundColor: "var(--bg-base)",
+              borderColor: "rgba(220, 214, 204, 0.8)",
             }}
           >
             <div className="px-6 py-6 space-y-2">

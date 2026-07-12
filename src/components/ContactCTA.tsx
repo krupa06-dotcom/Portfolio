@@ -12,7 +12,7 @@ export default function ContactCTA() {
      */
     <section
       className="py-16 sm:py-20 lg:py-24 relative border-t border-border/60 overflow-hidden"
-      style={{ backgroundColor: "#FFF8EE" }}
+      style={{ backgroundColor: "var(--bg-base)" }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -29,7 +29,7 @@ export default function ContactCTA() {
             {/* H2 — dark heading on white background */}
             <h2
               className="font-heading font-bold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em]"
-              style={{ color: "#1A0C06" }}
+              style={{ color: "var(--text-heading)" }}
             >
               Let&apos;s build something together.
             </h2>
@@ -45,7 +45,7 @@ export default function ContactCTA() {
             {/* Body text — readable on white */}
             <p
               className="text-sm sm:text-base leading-[1.6] mb-6 max-w-md lg:ml-auto"
-              style={{ color: "#6B3A26" }}
+              style={{ color: "var(--text-body)" }}
             >
               Open to new opportunities, collaborations, and freelance work.
               Reach out and I&apos;ll get back to you within 24 hours.

@@ -80,7 +80,7 @@ export default function CinematicBackground() {
       aria-hidden="true"
     >
       {/* ── Base background ─────────────────────────────── */}
-      <div className="absolute inset-0" style={{ backgroundColor: "#FFF8EE" }} />
+      <div className="absolute inset-0" style={{ backgroundColor: "var(--bg-base)" }} />
 
       {!quiet && (
         <>

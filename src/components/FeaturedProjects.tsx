@@ -21,13 +21,13 @@ export default function FeaturedProjects({
           {/* H2 — heading color, 600 weight, noticeably larger than body */}
           <h2
             className="font-heading font-semibold text-2xl sm:text-3xl lg:text-5xl tracking-[-0.03em] mb-3"
-            style={{ color: "#1A0C06" }}
+            style={{ color: "var(--text-heading)" }}
           >
             Featured Projects
           </h2>
 
           {/* Subtext — body color, clearly lighter than h2 */}
-          <p className="text-sm sm:text-base leading-[1.6] max-w-xl" style={{ color: "#6B3A26" }}>
+          <p className="text-sm sm:text-base leading-[1.6] max-w-xl" style={{ color: "var(--text-body)" }}>
             Live products I&apos;ve built end-to-end — from UI design to
             backend logic and deployment.
           </p>
