@@ -36,7 +36,7 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 sm:py-24 lg:py-28">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-5">
           <p
             style={{
               fontSize: "11px",
@@ -60,7 +60,7 @@ export default function SkillsStrip({ skills }: { skills: Skill[] }) {
         </div>
 
         {/* Category groups */}
-        <div className="space-y-12">
+        <div className="space-y-8">
           {groups.map((group, gi) => {
             const number = String(gi + 1).padStart(2, "0");
 
